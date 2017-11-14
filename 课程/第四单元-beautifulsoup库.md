@@ -1,12 +1,12 @@
 ﻿# beautifulsoup 安装和使用
 
-'''
+```
 pip install beautifulsoup4
 
 from bs4 import BeautifulSoup
 
-soup = BeautifulSoup('<p>data</p>','html.parser')
-'''
+soup = BeautifulSoup('&lt;p>data&lt;/p>','html.parser')
+```
 
 # bs库的基本元素
 
@@ -26,9 +26,9 @@ html5lib的解析器|BeautifulSoup(mk,'html5lib')|pip install html5lib
 基本元素|说明
 -|-
 Tag|标签，最基本的信息组织单元，以<>，</>表明开头和结尾
-Name|标签的名字，<p>...</p>的名字是‘p',格式：<tag>.name
-Attributes|标签的属性，字典形式，格式：<tag>.attrs
-NavigableString|标签内非属性字符串，<>...</>中的字符串，格式：<tag>.string
+Name|标签的名字，&lt;p>...&lt;/p>的名字是‘p',格式：&lt;tag>.name
+Attributes|标签的属性，字典形式，格式：&lt;tag>.attrs
+NavigableString|标签内非属性字符串，<>...</>中的字符串，格式：&lt;tag>.string
 Comment|标签内的字符串注释部分
 
 ![](2.png)
@@ -50,7 +50,7 @@ Comment|标签内的字符串注释部分
 
 属性|说明
 -|-
-.contents|子节点的列表，将<tag>所有儿子节点存入列表
+.contents|子节点的列表，将&lt;tag>所有儿子节点存入列表
 .children|子节点的迭代类型，用于循环遍历儿子节点
 .descendants|子孙节点的迭代类型，用于循环遍历所有子孙节点
 
