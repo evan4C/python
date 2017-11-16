@@ -5,7 +5,7 @@ pip install beautifulsoup4
 
 from bs4 import BeautifulSoup
 
-soup = BeautifulSoup('&lt;p>data&lt;/p>','html.parser')
+soup = BeautifulSoup(<p>data</p>','html.parser')
 ```
 
 # bs库的基本元素
