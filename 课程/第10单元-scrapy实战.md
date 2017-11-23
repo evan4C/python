@@ -85,7 +85,7 @@ yield是一个不断产生值的函数
 
 -  CSS selector 使用
 
-<HTML'\>'.css('a::attr(href)').extract()
+<HTML\>.css('a::attr(href)').extract()
 
 
 
