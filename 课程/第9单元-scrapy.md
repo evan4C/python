@@ -6,31 +6,31 @@
 
 1. 在命令行输入python获得当前python版本
 
-![](pic\python-v.png)
+![](pic/python-v.png)
 
 2. 在[Python Extension Packages for Windows](https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted)下载对应版本的whl文件
 
 3. 安装wheel
 
-![](pic\wheel.png)
+![](pic/wheel.png)
 
 4. 进入下载好的.whl文件目录，安装twisted
 
-![](pic\twisted.png)
+![](pic/twisted.png)
 
 5. 安装scrapy
 
-![](pic\scrapy.png)
+![](pic/scrapy.png)
 
 6. 大功告成
 
-![](pic\finish.png)
+![](pic/finish.png)
 
 - scrapy爬虫框架结构
 
 5个数据模块，两个中间键模块，3个数据流路径
 
-![](pic\scrapy-structure.png)
+![](pic/scrapy-structure.png)
 
 框架入口是spiders，出口是item pipelines
 
@@ -59,7 +59,7 @@ item pipelines模块用来对数据进行后处理
 
 - downloader middleware
 
-![](pic\downloader-middleware.png)
+![](pic/downloader-middleware.png)
 
 - spiders 
 
@@ -79,7 +79,7 @@ item pipelines模块用来对数据进行后处理
 
 - spider middleware
 
-![](pic\spider-middleware.png)
+![](pic/spider-middleware.png)
 
 # requests库和scrapy爬虫的比较
 
