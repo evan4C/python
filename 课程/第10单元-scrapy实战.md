@@ -66,7 +66,7 @@ yield是一个不断产生值的函数
 	- Request对象表示一个http请求
 	- 由spider生成，由downloader执行
 
-![](pic\c-request.png)
+![](pic/c-request.png)
 
 2. response类 	从网络中爬取内容的封装类
 	
@@ -74,7 +74,7 @@ yield是一个不断产生值的函数
 	- response对象表示一个http响应
 	- 由downloader生成，由spider处理
 
-![](pic\c-response.png)
+![](pic/c-response.png)
 
 3. item类 	由spider产生的信息
 
@@ -85,7 +85,7 @@ yield是一个不断产生值的函数
 
 -  CSS selector 使用
 
-<HTML>.css('a::attr(href)').extract()
+<HTML'\>'.css('a::attr(href)').extract()
 
 
 
