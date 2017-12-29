@@ -1,20 +1,4 @@
-Dec. 20, 2017   15:27:29
-Multi-Potential Steps
-File: 122004-pre
-Data Source:  Experiment
-Instrument Model:  CHI760E
-Ref. Electrode: 
-Header: 
-Note: 
-
-E1 (V) = -0.5
-T1 (s) = 300
-Cycle = 1
-Sample Interval (s) = 0.008
-Quiet Time (sec) = 2
-Sensitivity (A/V) = 0.001
-
-Time/sec, Current/A
+Time, Current
 
 8.000e-3, -2.229e-3
 1.600e-2, -1.840e-3
