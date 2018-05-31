@@ -11,6 +11,6 @@ def spec_activity():
          print ('specific activity(mA/cm2): {}'.format(spec_activity))
          print ('ECSA(cm2)= {}'.format(s))
          i=eval(input("continue(0/1):"))
-    print "over!"
+    print ("over!")
 
 spec_activity()
