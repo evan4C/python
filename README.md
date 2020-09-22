@@ -1,11 +1,3 @@
-# python-crawler
+# update: 2020/09/22
 
-和爬虫有关的知识
-
-参考课程：[【Python网络爬虫与信息提取】.MOOC. 北京理工大学](https://www.bilibili.com/video/av9784617)
-
-# python实例
-
-# python可视化
-
-# python数据分析
+把本地的文件夹和GitHub中的文件简单整理了一下。之后这个文件夹主要管理课程和机器学习之外的部分

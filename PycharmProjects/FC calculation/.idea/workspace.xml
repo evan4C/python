@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2b6869c5-d80b-491c-ad93-85c52f20293f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="fcv model" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1dsnPlkn0fmgwkKgWfkPwDS0Quz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="kite.configurable" />
+  </component>
+  <component name="RunManager" selected="Python.water injection flow rate">
+    <configuration name="C3-2 using the activation overpotential equation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fcv model" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/C3-2 using the activation overpotential equation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="C3-3 calculating the voltage losses for a polarzation curve" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fcv model" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/C3-3 calculating the voltage losses for a polarzation curve.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="C4-1 calculating the ohmic voltage loss" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fcv model" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/C4-1 calculating the ohmic voltage loss.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="C4-3 calculating the ohmic voltage loss due to membrane" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fcv model" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/C4-3 calculating the ohmic voltage loss due to membrane.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="water injection flow rate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fcv model" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/water injection flow rate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.water injection flow rate" />
+        <item itemvalue="Python.C4-3 calculating the ohmic voltage loss due to membrane" />
+        <item itemvalue="Python.C4-1 calculating the ohmic voltage loss" />
+        <item itemvalue="Python.C3-3 calculating the voltage losses for a polarzation curve" />
+        <item itemvalue="Python.C3-2 using the activation overpotential equation" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2b6869c5-d80b-491c-ad93-85c52f20293f" name="Default Changelist" comment="" />
+      <created>1593222646890</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593222646890</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="721" y="193" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593223041348">
+      <screen x="0" y="23" width="1792" height="1017" />
+    </state>
+    <state x="721" y="193" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1017@0.23.1792.1017" timestamp="1593223041348" />
+    <state width="865" height="371" key="GridCell.Tab.0.bottom" timestamp="1593868104847">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="865" height="371" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1593868104847" />
+    <state width="875" height="281" key="GridCell.Tab.0.bottom/0.23.1792.1017@0.23.1792.1017" timestamp="1593329103653" />
+    <state width="875" height="324" key="GridCell.Tab.0.bottom/0.23.1792.1019@0.23.1792.1019" timestamp="1593335372192" />
+    <state width="865" height="371" key="GridCell.Tab.0.center" timestamp="1593868104846">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="865" height="371" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1593868104846" />
+    <state width="875" height="281" key="GridCell.Tab.0.center/0.23.1792.1017@0.23.1792.1017" timestamp="1593329103652" />
+    <state width="875" height="324" key="GridCell.Tab.0.center/0.23.1792.1019@0.23.1792.1019" timestamp="1593335372192" />
+    <state width="865" height="371" key="GridCell.Tab.0.left" timestamp="1593868104845">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="865" height="371" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1593868104845" />
+    <state width="875" height="281" key="GridCell.Tab.0.left/0.23.1792.1017@0.23.1792.1017" timestamp="1593329103652" />
+    <state width="875" height="324" key="GridCell.Tab.0.left/0.23.1792.1019@0.23.1792.1019" timestamp="1593335372192" />
+    <state width="865" height="371" key="GridCell.Tab.0.right" timestamp="1593868104846">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="865" height="371" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1593868104846" />
+    <state width="875" height="281" key="GridCell.Tab.0.right/0.23.1792.1017@0.23.1792.1017" timestamp="1593329103653" />
+    <state width="875" height="324" key="GridCell.Tab.0.right/0.23.1792.1019@0.23.1792.1019" timestamp="1593335372192" />
+    <state width="865" height="371" key="GridCell.Tab.1.bottom" timestamp="1593868104848">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="865" height="371" key="GridCell.Tab.1.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1593868104848" />
+    <state width="875" height="324" key="GridCell.Tab.1.bottom/0.23.1792.1017@0.23.1792.1017" timestamp="1593328787083" />
+    <state width="875" height="324" key="GridCell.Tab.1.bottom/0.23.1792.1019@0.23.1792.1019" timestamp="1593335372193" />
+    <state width="875" height="324" key="GridCell.Tab.1.bottom/0.23.1792.1021@0.23.1792.1021" timestamp="1593332854681" />
+    <state width="865" height="371" key="GridCell.Tab.1.center" timestamp="1593868104847">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="865" height="371" key="GridCell.Tab.1.center/0.0.1792.1120@0.0.1792.1120" timestamp="1593868104847" />
+    <state width="875" height="324" key="GridCell.Tab.1.center/0.23.1792.1017@0.23.1792.1017" timestamp="1593328787083" />
+    <state width="875" height="324" key="GridCell.Tab.1.center/0.23.1792.1019@0.23.1792.1019" timestamp="1593335372193" />
+    <state width="875" height="324" key="GridCell.Tab.1.center/0.23.1792.1021@0.23.1792.1021" timestamp="1593332854680" />
+    <state width="865" height="371" key="GridCell.Tab.1.left" timestamp="1593868104847">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="865" height="371" key="GridCell.Tab.1.left/0.0.1792.1120@0.0.1792.1120" timestamp="1593868104847" />
+    <state width="875" height="324" key="GridCell.Tab.1.left/0.23.1792.1017@0.23.1792.1017" timestamp="1593328787082" />
+    <state width="875" height="324" key="GridCell.Tab.1.left/0.23.1792.1019@0.23.1792.1019" timestamp="1593335372193" />
+    <state width="875" height="324" key="GridCell.Tab.1.left/0.23.1792.1021@0.23.1792.1021" timestamp="1593332854680" />
+    <state width="865" height="371" key="GridCell.Tab.1.right" timestamp="1593868104848">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="865" height="371" key="GridCell.Tab.1.right/0.0.1792.1120@0.0.1792.1120" timestamp="1593868104848" />
+    <state width="875" height="324" key="GridCell.Tab.1.right/0.23.1792.1017@0.23.1792.1017" timestamp="1593328787083" />
+    <state width="875" height="324" key="GridCell.Tab.1.right/0.23.1792.1019@0.23.1792.1019" timestamp="1593335372193" />
+    <state width="875" height="324" key="GridCell.Tab.1.right/0.23.1792.1021@0.23.1792.1021" timestamp="1593332854681" />
+    <state x="616" y="166" key="SettingsEditor" timestamp="1593226104411">
+      <screen x="0" y="23" width="1792" height="1017" />
+    </state>
+    <state x="616" y="166" key="SettingsEditor/0.23.1792.1017@0.23.1792.1017" timestamp="1593226104411" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1593865706492">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1593865706492" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/C2-2 calculating the enthalpy of H2 O2 H2O.py</url>
+          <line>61</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/water injection flow rate.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
