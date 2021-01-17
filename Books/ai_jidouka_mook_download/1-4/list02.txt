@@ -1,0 +1,27 @@
+'''前処理用のモジュールをインポートする'''
+import os
+import glob
+import codecs
+import logging
+import re
+import random
+from itertools import chain
+
+'''形態素解析用の外部モジュールをインポートする'''
+!pip install janome
+from janome.tokenizer import Tokenizer
+
+'''Word2Vec用のモジュールをインポートする'''
+from gensim.models import Word2Vec
+
+'''LSTM用のモジュールをインポートする'''
+import copy
+import numpy as np
+from numpy.random import rand # ランダムなベクトルを作るための関数
+from tqdm import tqdm # ループの進捗を表示するモジュール
+import torch # 深層学習用のモジュールPyTorch
+import torch.nn as nn #　ニューラルネットワーク用のモジュール
+import torch.nn.functional as F # 活性化関数用のモジュール
+import torch.optim as optim # PyTorchのオプティマイザー
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix

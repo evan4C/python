@@ -1,0 +1,10 @@
+import requests
+import json
+
+s = input("type a ID:")
+address = 'https://tuya-no.firebaseio.com/mydata/'
+result = requests.get(address + s + '.json')
+data = json.loads(result.text)
+print('Name: ' + data['name'])
+print('Mail: ' + data['mail'])
+print('Tel: ' + data['tel'])

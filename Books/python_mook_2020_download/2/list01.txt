@@ -1,0 +1,13 @@
+fp = open("sample1.pdf", 'rb')
+outfp = StringIO()
+
+rmgr = PDFResourceManager()
+lprms = LAParams()
+device = TextConverter(rmgr, outfp, laparams=lprms)
+
+iprtr = PDFPageInterpreter(rmgr, device)
+
+for page in PDFPage.get_pages(fp):
+  iprtr.process_page(page)
+
+text = outfp.getvalue()

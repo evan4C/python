@@ -1,0 +1,15 @@
+# “Á’¥ì¬
+def create_feature(data):
+    feature = data[["‰w–¼", "Œš•¨\‘¢", "“k•à•ª", "ê—L–ÊÏ", "ŠÔæ‚è", "•”‰®”", "’z”N", "ŠİŠK"]].copy()
+    feature["’z”N"] = pd.to_datetime(feature["’z”N"].fillna(0).astype(int).astype(str), format="%Y%m", errors="coerce")
+    feature["’z”N"] = (feature["’z”N"] - pd.to_datetime("1900-01-01")).dt.total_seconds() #“ú•t‚ğ˜A‘±’l‚É•ÏŠ·
+    feature["ŠİŠK"] = feature["ŠİŠK"].str.replace('B', '-').astype(int) #’n‰º•\‹L‚ğ”š‚É•ÏŠ·
+
+    cat_cols = ['‰w–¼', 'Œš•¨\‘¢', 'ŠÔæ‚è']
+    feature[cat_cols] = feature[cat_cols].astype("category")
+    feature = feature.rename(columns={'‰w–¼': 'station', 'Œš•¨\‘¢': 'structure', '“k•à•ª': 'walk_min', 'ê—L–ÊÏ': 'area', 'ŠÔæ‚è': 'room_type', '•”‰®”': 'room', '’z”N': 'age', 'ŠİŠK': 'floor'})
+
+    return feature
+
+X_train = create_feature(train_data)
+y_train = train_data["¬–ñ‰¿Ši"]

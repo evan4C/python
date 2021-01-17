@@ -1,0 +1,44 @@
+for epoch in range(epoch_num):
+  all_loss = 0
+  random.shuffle(train_data) # 毎エポック訓練データの中身をシャッフル
+  correct_answers = 0
+  print('epoch: ', epoch)
+  for i in tqdm(range(0, loop_num)):
+    index = i * batch_size
+    batch_data = [train_data[j] for j in range(index, index+batch_size)]
+
+    for sentence, writer_index in batch_data:
+      lstm_model.zero_grad()
+
+      '''訓練データの中身をベクトルで置き換える'''
+      '''Word2Vecモデルに存在しない単語が出てきた場合は適当なベクトルで置き換える'''
+      sentence_vec = [word_model.wv[word] if word in word_model.wv.vocab
+                     else rand(embedding_dim).astype(np.float32) for word in sentence]
+
+      '''すぐ上で用意したベクトルをPyTorchのテンソルに変換する'''
+      sentence_in = torch.tensor(sentence_vec).view(len(sentence), 1, -1).to(device)
+
+      '''同様にラベルの方もPyTorchのテンソルに変換する'''
+      target = torch.tensor([writer_index]).to(device)
+      output = lstm_model(sentence_in)
+
+      _, pred = torch.max(output, 1)
+      if pred == target:
+        correct_answers += 1
+
+      loss = F.nll_loss(output, target) # lossを計算
+      loss.backward() # 誤差逆伝搬の計算
+      optimizer.step() # lossに応じてパラメータを更新
+      all_loss += loss.item()
+
+  print('Training data accuracy: ', correct_answers / (loop_num * batch_size))
+  print('Loss: ', str(all_loss))
+
+  if epoch % 10 == 0:
+    save_model(lstm_model, epoch)
+    result_log(save_results=True)
+  else:
+    result_log()
+
+result_log(save_results=True)
+save_model(lstm_model)

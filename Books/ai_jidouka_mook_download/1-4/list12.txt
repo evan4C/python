@@ -1,0 +1,6 @@
+torch.manual_seed(1)
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+epoch_num = 100 # 学習を繰り返す回数
+batch_size = 100 # バッチサイズ、一度にどれだけの数のデータを一緒に扱って学習するかを決めるパラメータ
+lr = 0.001 # 学習率、パラメータを更新する量
+embedding_dim = word_model.trainables.layer1_size # 単語の分散表現の次元

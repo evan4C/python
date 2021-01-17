@@ -1,0 +1,32 @@
+class RankDataForList:
+  def __init__(self, list_data):
+    self.list_data = list_data
+
+  def name(self):
+    return self.list_data[0]
+
+  def value(self):
+    return self.list_data[1]
+
+class RankDataForDict:
+  def __init__(self, dict_data):
+    self.dict_data = dict_data
+
+  def name(self):
+    return self.dict_data["name"]
+
+  def value(self):
+    return self.dict_data["point"]
+
+def ranking(data):
+  for rank, v in enumerate(sorted(data, \
+    key=lambda v: v.value(), reverse=True)):
+    print('{0}:{1} {2}'.format(rank + 1, v.name(), v.value()))
+
+data = [{ "name": "川崎", "point": 69 },
+        { "name": "鹿島", "point": 56 },
+        { "name": "広島", "point": 57 }]
+ranking([RankDataForDict(v) for v in data])
+
+data = [["アイス", 1000], ["クッキー", 1200], ["団子", 800]]
+ranking([RankDataForList(v) for v in data])

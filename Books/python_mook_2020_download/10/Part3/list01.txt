@@ -1,0 +1,18 @@
+import random
+
+hands = ['グー', 'チョキ', 'パー']
+print("グー: 0, チョキ: 1, パー: 2")
+you = int(input())
+enemy = random.randint(0, 2)
+print('あなた: {0}, \
+  相手: {1}'.format(hands[you], \
+  hands[enemy]))
+
+result = (you - enemy) % 3
+
+if result == 0:
+  print("DRAW")
+elif result == 1:
+  print("LOSE")
+else:
+  print("WIN")

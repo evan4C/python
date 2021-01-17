@@ -1,0 +1,22 @@
+def names(name_and_group_list, group_name):
+    _names = []
+    for name_and_group in name_and_group_list:
+        if name_and_group[0] == group_name:
+            name = name_and_group[1]
+            if name not in _names:
+                _names.append(name)
+
+    return _names
+
+name_and_group_list = [
+    ["A", "なかむらけんごう"],
+    ["A", "おおじまりょうた"],
+    ["B", "こはやしゆう"],
+    ["B", "さいとうまなふ"],
+    ["B", "こはやしゆう"],
+]
+
+print(names(name_and_group_list, "B"))
+
+
+

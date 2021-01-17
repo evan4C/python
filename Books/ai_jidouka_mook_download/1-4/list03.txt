@@ -1,0 +1,8 @@
+try:
+  from google.colab import drive # Google Driveからファイルを読み込むための外部モジュール
+  drive.mount('./gdrive')
+  # base_dir上に各作者のディレクトリ['natsume', 'dazai', 'akutagawa', 'fukuzawa', 'mori']があることを想定
+  base_dir = './gdrive/My Drive/Colab Notebooks'
+# google.colabモジュールが存在しない場合（ローカル環境など）であればbase_dirをスクリプトと同じディレクトリに指定
+except ModuleNotFoundError: # Google Colab上で実行しない場合
+  base_dir = './'

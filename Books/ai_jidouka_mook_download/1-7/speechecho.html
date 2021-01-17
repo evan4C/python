@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="ja"><head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<style type="text/css">
+.area { width: 300px; height: 2em; border: 1px solid #000; margin-bottom: 10px;}
+.balloon1-left {
+  position: relative;
+  display: inline-block;
+  margin: 0.5em 0 0.5em 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+}
+
+.balloon1-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid #e0edff;
+}
+
+.balloon1-left p {
+  margin: 0;
+  padding: 0;
+}
+
+.balloon1-right {
+  position: relative;
+  display: inline-block;
+  margin: 0.5em 15px 0.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #ff99cc;
+}
+
+.balloon1-right:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-left: 15px solid #ff99cc;
+}
+
+.balloon1-right p {
+  margin: 0;
+  padding: 0;
+}
+</style></head><body>
+
+<input id="btn" type="button" value="Start"/> <br />
+<table>
+  <tr>
+    <td> Browser </td>
+    <td> AI </td>
+  </tr>
+  <tr>
+    <td><div class="area"> <span id="finish"></span> <span id="interim"></span></div></td>
+    <td><div class="area"><span id="ret"></div></td>
+  </tr>
+  <tr>
+    <td><div id="b_response"></div></td>
+    <td><div id="a_response"></div></td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var rec;
+var nowRecognition = false;
+var checkSpeechId = null;
+var nowRecognitionTime = 0;
+
+function start () {
+  speechRec = webkitSpeechRecognition || SpeechRecognition;
+  rec = new speechRec();
+  rec.lang = "ja-JP";
+  rec.continuous = true;
+  rec.interimResults = true;
+  rec.onresult = function (e) {
+    var finaltext = '';
+    var interimtext = '';
+    nowRecognitionTime = +new Date();
+    for (var i = 0; i < e.results.length; i++) {
+      if (e.results[i].isFinal) {
+        finaltext += e.results[i][0].transcript;
+      } else {
+        interimtext += e.results[i][0].transcript;
+      }
+    }
+    $("#interim").text(interimtext);
+    $("#finish").text(finaltext);
+  };
+  rec.start();
+  nowRecognition = true;
+};
+
+function stop () {
+  rec.stop();
+  nowRecognition = false;
+}
+
+function checkSpeech() {
+  if (+new Date() - nowRecognitionTime >= 2000) {
+    stop();
+
+    if ($("#finish").text()) {
+      $("#b_response").append('<div class="balloon1-left"><p>' + $("#finish").text() + '</p></div><br />');
+
+      // 対話ボットAIへのリクエスト
+      $.ajax({url: 'https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk',
+        type: 'POST',
+        data: {'query': $("#finish").text(),
+              'apikey': "XXXXXXXXXXXXXXXXXXXXXXXXXXX"},
+        timeout: 3000,
+        success: function(data){
+          $("#ret").text(data.results[0].reply);
+          $("#a_response").append('<div class="balloon1-right"><p>' + data.results[0].reply + '</p></div><br />');
+
+          // 音声としてブラウザに発話させる
+          synthes = new SpeechSynthesisUtterance(data.results[0].reply);
+          synthes.lang = "ja-JP"
+          speechSynthesis.speak(synthes);
+        },error: function(){
+          alert('Error');
+        }
+      })
+      $("#finish").text("");
+    }
+    start();
+  }
+  checkSpeechId = setTimeout(checkSpeech, 2000);
+}
+
+$('#btn').on('click', function () {
+  if (nowRecognition) {
+    stop();
+    this.value = 'Start';
+    clearTimeout(checkSpeechId);
+  } else {
+    start();
+    this.value = 'Stop';
+    checkSpeechId = setTimeout(checkSpeech, 2000);
+    nowRecognitionTime = +new Date();
+  }
+});
+</script></body></html>

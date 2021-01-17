@@ -1,0 +1,10 @@
+def gini(y):
+  y.sort()
+  n = len(y)
+  nume = 0
+
+  for i in range(n):
+    nume = nume + (i + 1) * y[i]
+    deno = n * sum(y)
+    
+  return ((2*nume)/deno - (n+1)/(n))*(n/(n-1))

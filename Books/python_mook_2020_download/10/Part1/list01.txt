@@ -1,0 +1,13 @@
+def day_proc():
+    day = 1
+    first_saturday = 7
+    while day <= 31:
+        if (day - first_saturday) % 7 == 0:
+            print('土')
+        elif (day - first_saturday) % 7 == 1:
+            print('日')
+        else:
+            print(day)
+        day += 1
+
+day_proc()

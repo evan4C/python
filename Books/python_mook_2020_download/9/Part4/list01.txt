@@ -1,0 +1,8 @@
+def doAction(sender):
+  label = sender.superview['label1']
+  field = sender.superview['textfield1']
+  n = int(field.text)
+  total = 0
+  for i in range(n + 1):
+    total += i
+  label.text = 'Total: ' + str(total)

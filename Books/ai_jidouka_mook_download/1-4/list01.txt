@@ -1,0 +1,2 @@
+import torch
+torch.cuda.is_available() # 実行環境でcuda（GPUを利用するためのツール）が使えるかを表示

@@ -1,0 +1,23 @@
+def ranking(data):
+  if len(data) == 0:
+    return
+
+  check_data = data[0]
+  if isinstance(check_data, list):
+    values_for_sort = [v[1] for v in data]
+    names_by_value = { v[1]: v[0] for v in data }
+  elif isinstance(check_data, dict):
+    values_for_sort = [v["point"] for v in data]
+    names_by_value = { v["point"]: v["name"] for v in data }
+
+  rank = 0
+  for v in sorted(values_for_sort, reverse=True):
+    rank += 1
+    name = names_by_value[v]
+    print('{0}:{1} {2}'.format(rank, name, v))
+
+ranking([{ "name": "川崎", "point": 69 }, 
+         { "name": "鹿島", "point": 56 }, 
+         { "name": "広島", "point": 57 }])
+ranking([["アイス", 1000], ["クッキー", 1200], ["団子", 800]])
+

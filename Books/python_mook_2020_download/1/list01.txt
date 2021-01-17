@@ -1,0 +1,6 @@
+for row in wsk:
+    rowstr=""
+    for cell in row:
+        cellstr = "(%s, %s)" % (cell.coordinate, 'None' if cell.value is None else cell.value)
+        rowstr += " %s " % cellstr 
+    print(rowstr)

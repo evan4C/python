@@ -1,0 +1,16 @@
+# 10000イテレーションまでLightGBMを学習
+def mape_func(y_pred, data):
+    y_true = data.get_label()
+    mape = calc_mape(y_true, y_pred)
+    return 'mape', mape, False
+
+result_dic ={}
+model = lgb.train(
+    params=params, 
+    train_set=lgb_dataset_trn, 
+    valid_sets=[lgb_dataset_trn, lgb_dataset_val], 
+    feval=mape_func, 
+    num_boost_round=10000, 
+    verbose_eval=1000, 
+    evals_result=result_dic
+)

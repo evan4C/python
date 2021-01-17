@@ -1,0 +1,20 @@
+def ranking(data, name_fnc, sort_value_fnc):
+  if len(data) == 0:
+    return
+
+  values_for_sort = [sort_value_fnc(v) for v in data]
+  names_by_value = { sort_value_fnc(v): name_fnc(v) for v in data }
+
+  rank = 0
+  for v in sorted(values_for_sort, reverse=True):
+    rank += 1
+    name = names_by_value[v]
+    print('{0}:{1} {2}'.format(rank, name, v))
+
+data = [{ "name": "川崎", "point": 69 }, 
+        { "name": "鹿島", "point": 56 }, 
+        { "name": "広島", "point": 57 }]
+ranking(data, lambda v: v["name"], lambda v: v["point"])
+
+data = [["アイス", 1000], ["クッキー", 1200], ["団子", 800]]
+ranking(data, lambda v: v[0], lambda v: v[1])

@@ -1,0 +1,214 @@
+#shooting game
+import pygame
+import math
+import random
+from gpiozero import MCP3002
+
+ch0 = MCP3002(0) 
+ch1 = MCP3002(1)
+WIDTH = 640
+HEIGHT = 480
+BLACK = (  0,   0,   0)
+WHITE = (255, 255, 255)
+OUTSIDE = 999
+
+#角度と速度からXY移動量を算出
+def getvectol(degree,speed):
+  rad = math.radians(degree)
+  tempx1 = (math.cos(rad)) * speed
+  tempy1 = (math.sin(rad)) * speed
+  return (tempx1, tempy1)
+  
+#スプライトのクラス
+class Spclass(pygame.sprite.Sprite):
+  def __init__(self, x, y, angle, num):
+    pygame.sprite.Sprite.__init__(self)
+    #画像を回転
+    tempimage = \
+      pygame.transform.rotate( \
+      charas[num].image, -angle - 90) 
+    self.image = tempimage
+    self.rect = self.image.get_rect()
+    self.rect.centerx = x    #X座標
+    self.rect.centery = y    #Y座標
+    self.angle = angle       #角度
+    self.hp = charas[num].hp #体力
+    self.num = num           #種類
+    self.time = 0
+    
+#爆発のスプライト
+class Explosion(Spclass):
+  def update(self):
+    if self.time>10: self.rect.centerx = OUTSIDE
+    
+#自弾のスプライト
+class Shot(Spclass):
+  def update(self):
+    x1,y1 = getvectol(self.angle, 8)
+    self.rect.centerx += x1
+    self.rect.centery += y1
+    #当たり判定
+    hitlist = pygame.sprite.spritecollide(self,\
+      allgroup, False) 
+    for sp in hitlist:
+      if sp.num == 4:
+        self.rect.centerx = OUTSIDE
+        sp.hp -= 1
+        break
+        
+#敵弾のスプライト
+class Fireball(Spclass):
+  def update(self):
+    x1,y1 = getvectol(self.angle, 3)
+    self.rect.centerx += x1  
+    self.rect.centery += y1  
+    
+#自機のスプライト
+class Player(Spclass):
+  def update(self):
+    joyx = ch0.value - 0.5
+    joyy = ch1.value - 0.5
+    if abs(joyx) > 0.1 or abs(joyy) > 0.1:
+      self.angle = \
+        math.degrees(math.atan2(joyy, joyx))
+    if len(allgroup)<100 and self.time % 15==0:
+      newsp = Shot(self.rect.centerx, \
+        self.rect.centery, self.angle, 1)
+      allgroup.add(newsp)   #弾を発射
+    #当たり判定
+    hitlist = \
+      pygame.sprite.spritecollide(self, \
+      allgroup, False) 
+    for sp in hitlist:
+      if charas[sp.num].enemy==True:
+        self.hp -= 1
+        sp.hp -= 1
+        break
+        
+#敵のスプライト
+class Ufo(Spclass):
+  def update(self):
+    x1,y1 = getvectol(self.angle, 1)
+    self.rect.centerx += x1
+    self.rect.centery += y1
+    dx = player.rect.centerx - self.rect.centerx
+    dy = player.rect.centery - self.rect.centery
+    #角度算出
+    diffangle=math.degrees(math.atan2(dy,dx)) \
+      - self.angle 
+    if diffangle>180: diffangle -= 360
+    if diffangle<-180: diffangle += 360
+    if allgroup.has(player) != 0:
+      if diffangle < 0:
+        self.angle -=1
+      else:
+        self.angle +=1
+      if len(allgroup) < 100 and \
+        random.randrange(100) == 0:
+        allgroup.add(Fireball( \
+          self.rect.centerx, \
+          self.rect.centery, self.angle, 2))
+          
+#character data
+class Characlass:
+  def __init__(self, filename, hp ,enemy):
+    self.image = pygame.image.load(filename)
+    self.hp = hp        #体力
+    self.enemy = enemy  #敵フラグ
+    
+pygame.init()
+screen = pygame.display.set_mode((WIDTH,HEIGHT))
+myfont = pygame.font.Font(None ,48)
+myclock = pygame.time.Clock()
+charas = []
+
+#0:explosion(画像=0/体力=1/フラグ=味方)
+charas.append(Characlass("chr0.png", 1 ,False))
+#1:shot(画像=1/体力=1/フラグ=味方)
+charas.append(Characlass("chr1.png", 1 ,False)) 
+#2:fireball(画像=2/体力=99/フラグ=敵)  
+charas.append(Characlass("chr2.png", 99,True))  
+#3:player(画像=3/体力=1/フラグ=味方)
+charas.append(Characlass("chr3.png", 1 ,False)) 
+#4:fighter(画像=4/体力=1/フラグ=敵)  
+charas.append(Characlass("chr4.png", 1 ,True))
+
+stars = []
+for i in range(10):
+  x = random.randrange(WIDTH)
+  y = random.randrange(HEIGHT)
+  stars.append([x, y, 3, 3]) #星のリストを作成
+
+allgroup = pygame.sprite.Group()
+endflag = 0
+while endflag == 0:
+  allgroup.empty()
+  player = Player(WIDTH/2, HEIGHT/2, 0, 3)
+  allgroup.add(player)  #自機を追加
+  gameover = 0
+  while endflag==0:
+    for event in pygame.event.get():
+      if event.type == pygame.QUIT: endflag=1
+
+    screen.fill(BLACK)
+    scrollx1,scrolly1=getvectol(player.angle, 3)
+    for i in range(len(stars)):
+      stars[i][0]=(stars[i][0]-scrollx1)%WIDTH 
+      stars[i][1]=(stars[i][1]-scrolly1)%HEIGHT
+      #星を描く  
+      pygame.draw.rect(screen, WHITE ,stars[i]) 
+
+    if len(allgroup) < 100 and \
+      random.randrange(20) == 0:      
+      if random.randrange(2) == 0:      
+        x = random.randrange(WIDTH)      
+        y = random.randrange(2) * (HEIGHT-1)
+      else:
+        x = random.randrange(2) * (WIDTH-1) 
+        y = random.randrange(HEIGHT)
+      #新しい敵の出現
+      allgroup.add(Ufo(x, y, \
+        random.randrange(360), 4))  
+
+    for sp in allgroup.sprites():
+      sp.time += 1
+      x = sp.rect.centerx
+      y = sp.rect.centery
+      if x<0 or x>=WIDTH or y<0 or y>=HEIGHT:
+        #画面外のスプライトを消去
+        allgroup.remove(sp)  
+        continue
+
+      if sp.hp <= 0:
+        allgroup.remove(sp)
+        #爆発を追加
+        allgroup.add(Explosion(x, y, 0, 0)) 
+        continue
+
+      if sp.num != 3:
+        sp.rect.centerx -= scrollx1
+        sp.rect.centery -= scrolly1
+      
+      #画像を回転
+      tempimage = \
+        pygame.transform.rotate( \
+        charas[sp.num].image, -sp.angle-90) 
+      #回転後の画像のサイズを取得
+      rect = tempimage.get_rect() 
+      sp.image = tempimage  #画像を再設定
+      sp.rect.width = rect.width
+      sp.rect.height = rect.height
+
+    allgroup.update()
+    allgroup.draw(screen)
+    #自機が存在しない場合
+    if allgroup.has(player)==0:  
+      imagetext = myfont.render("GAME OVER", \
+        True, WHITE)
+      screen.blit(imagetext, (230, 200))
+      gameover += 1
+      if gameover >= 120:break
+    myclock.tick(60)
+    pygame.display.flip()
+
+pygame.quit()

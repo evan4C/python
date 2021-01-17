@@ -1,0 +1,16 @@
+tokenizer = Tokenizer() # 形態素解析用のインスタンスを作成
+
+separated_train_sentences = dict() # 形態素解析した訓練データを格納する辞書
+separated_test_sentences = dict() # 形態素解析したテストデータを格納する辞書
+
+for writer in WRITERS:
+  separated_train_sentences[writer] = list() # 訓練用の各作者の文を形態素解析したものを入れるリスト
+  separated_test_sentences[writer] = list() # テスト用の各作者の文を形態素解析したものを入れるリスト
+
+'''訓練データについて各作者のすべての文について形態素解析を行い、新たに文ごとに形態素のリストを作成する'''
+for writer, sentences in train_sentences.items():
+  separated_train_sentences[writer] = [[token.surface for token in tokenizer.tokenize(sentence)] for sentence in sentences]
+
+'''テストデータについて各作者のすべての文について形態素解析を行い、新たに文ごとに形態素のリストを作成する'''
+for writer, sentences in test_sentences.items():
+  separated_test_sentences[writer] = [[token.surface for token in tokenizer.tokenize(sentence)] for sentence in sentences]

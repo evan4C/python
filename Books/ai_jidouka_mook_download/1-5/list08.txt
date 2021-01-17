@@ -1,0 +1,8 @@
+# 10000イテレーションまでの学習経過を表示
+result_df = pd.DataFrame(result_dic['training']).add_prefix('train_').join(pd.DataFrame(result_dic['valid_1']).add_prefix('valid_'))
+fig, ax = plt.subplots(figsize=(10, 6))
+result_df[['train_mape', 'valid_mape']].plot(ax=ax)
+ax.set_ylabel('MAPE [%]')
+ax.set_xlabel('num of iteration')
+ax.set_ylim(2, 8)
+ax.grid()

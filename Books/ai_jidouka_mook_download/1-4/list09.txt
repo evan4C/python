@@ -1,0 +1,5 @@
+word_model_path = os.path.join(base_dir, 'word2vec.gensim.model') # 学習済みモデルのパス
+'''学習済みモデルをロードする'''
+word_model = Word2Vec.load(word_model_path)
+'''上記でロードしたモデルについて、自分で用意した訓練データを入れて再学習させる'''
+word_model.train(chain.from_iterable(separated_train_sentences.values()), total_examples=sum([len(sentences) for sentences in separated_train_sentences.values()]), epochs=100)

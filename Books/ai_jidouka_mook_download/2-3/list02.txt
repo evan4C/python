@@ -1,0 +1,24 @@
+from PyPDF2 import PdfFileReader
+from PIL import Image
+
+fp = open('PDFtest2.pdf', 'rb')
+reader = PdfFileReader(fp)
+pgnum = reader.getNumPages()
+
+for i in range(pgnum):   
+  pg = reader.getPage(i)
+
+  if '/XObject' in pg['/Resources']:
+    xobjs = pg['/Resources']['/XObject']
+
+    for key, obj in xobjs.items():
+      item = obj.getObject()
+
+      if item['/Subtype'] == '/Image':
+        if  item['/Filter'] == '/FlateDecode':
+          size = (item['/Width'], item['/Height'])
+          data = item.getData()
+          img = Image.frombytes('RGB', size, data)
+          img.show()
+
+fp.close()

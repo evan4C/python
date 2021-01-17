@@ -1,0 +1,6 @@
+'''各作家の文リストのうち、要素数が一番少ないものの要素数を取得する'''
+min_train = min(len(sentences) for sentences in train_sentences.values())
+for writer in train_sentences.keys():
+  '''上で得た要素数に応じて、他の作者の文を減らす。この時、訓練データをシャッフルする'''
+  random.shuffle(train_sentences[writer])
+  train_sentences[writer] = train_sentences[writer][:min_train]

@@ -1,0 +1,16 @@
+from PyPDF2 import PdfFileReader
+from PyPDF2 import PdfFileWriter
+
+fp = open("pdf_all.pdf", 'rb')
+input = PdfFileReader(fp)
+
+pgnum = input.getNumPages()
+
+for i in range(pgnum):   
+  output = PdfFileWriter()
+  output.addPage(input.getPage(i))
+  outputfile = open("pdf_all_"+str(i)+".pdf", 'wb')
+  output.write(outputfile) 
+  outputfile.close() 
+
+fp.close()

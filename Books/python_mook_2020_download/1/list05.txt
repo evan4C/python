@@ -1,0 +1,15 @@
+with open('manuscript.txt', encoding='utf-8') as f:
+    eof = False
+    while eof == False:
+        rline = "" # 1行分の文字列を保持する
+        while len(rline) < 16:
+            letter = f.read(1)
+            if letter=='' or letter is None: # ファイルの最後に来た
+                eof = True
+                break
+            elif letter == "\n":
+                break
+            else:
+                rline += letter
+        wsm.append([rline]) # 16字になるか、改行に来たらセルに挿入する
+f.close()   

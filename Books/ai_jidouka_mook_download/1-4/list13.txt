@@ -1,0 +1,32 @@
+class LSTM(nn.Module):
+  '''LSTMを定義するクラス'''
+
+  def __init__(self, embedding_dim, hidden_dim=50): # embedding_dimは入力の次元数
+
+    super(LSTM, self).__init__()
+    self.hidden_dim = hidden_dim # 隠れ層の次元
+    self.tagset_size = len(WRITERS) # 出力の次元数（作者5人であれば5）
+
+    '''LSTMのモデルを定義する。隠れ層は一層で、biLSTMを使用する'''
+    self.lstm = nn.LSTM(embedding_dim, hidden_dim // 2,
+                        num_layers=1, bidirectional=True)
+
+    '''全結合層を定義する'''
+    self.fc = nn.Linear(hidden_dim * 2, self.tagset_size)
+
+    '''隠れ層を定義する'''
+    self.hidden = self._init_hidden()
+
+  def _init_hidden(self): # 隠れ層の初期化を行う関数
+    return (torch.randn(2, 1, self.hidden_dim // 2).to(device),
+            torch.randn(2, 1, self.hidden_dim // 2).to(device))
+
+  def forward(self, sentence):
+    '''入力をLSTMに通す'''
+    lstm_out, _ = self.lstm(sentence, self.hidden)
+    '''LSTMからの出力を平均プーリングと最大値プーリングに通して結合する'''
+    cat_out = torch.cat((torch.max(lstm_out, 0).values, torch.mean(lstm_out, 0)), dim=1)
+    '''全結合させる'''
+    fc_out = self.fc(cat_out)
+    output = F.log_softmax(fc_out, dim=1)
+    return output

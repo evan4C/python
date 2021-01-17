@@ -1,0 +1,14 @@
+train_data = list() # LSTMに入れる訓練データのリスト
+test_data = list() # LSTMに入れるテストデータのリスト
+
+'''入力するデータを形態素解析した文とタグのタプルをリストにする'''
+for writer, sentences in separated_train_sentences.items():
+  writer_index = WRITERS.index(writer)
+  for sentence in sentences:
+    train_data.append([sentence, writer_index])
+
+'''入力するデータを形態素解析した文とタグのタプルをリストにする'''
+for writer, sentences in separated_test_sentences.items():
+  writer_index = WRITERS.index(writer)
+  for sentence in sentences:
+    test_data.append([sentence, writer_index])

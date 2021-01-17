@@ -1,0 +1,11 @@
+def day_string(day, first_saturday):
+    if (day - first_saturday) % 7 == 0:
+        return '土'
+    elif (day - first_saturday) % 7 == 1:
+        return '日'
+    return str(day)
+
+def day_strings(first_saturday, end_date):
+    return [day_string(day, first_saturday) for day in range(1, end_date + 1)]
+
+print('\n'.join(day_strings(7, 31)))

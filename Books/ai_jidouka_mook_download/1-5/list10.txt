@@ -1,0 +1,9 @@
+feature_importance = pd.DataFrame({
+    'feature_name' : model.feature_name(),
+    'importance' : model.feature_importance(importance_type='gain'),
+})
+feature_importance = feature_importance.sort_values('importance', ascending=False)
+
+plt.figure(figsize = (6, 6))
+sns.barplot(data=feature_importance, x='importance', y='feature_name')
+plt.savefig('feature_importance.png')

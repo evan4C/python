@@ -1,0 +1,11 @@
+from collections import defaultdict
+
+def names_by_group(name_and_group_list):
+    _names_by_group = defaultdict(list)
+    for name_and_group in name_and_group_list:
+        group = name_and_group[0]
+        name = name_and_group[1]
+        if name not in _names_by_group[group]:
+            _names_by_group[group].append(name)
+
+    return _names_by_group

@@ -1,0 +1,13 @@
+from PIL import Image
+import pyocr
+
+tools = pyocr.get_available_tools()
+tool = tools[0]
+
+txt = tool.image_to_string(
+  Image.open('img1.png'),
+  lang='jpn+eng',
+  builder=pyocr.builders.TextBuilder()
+)
+
+print(txt)

@@ -1,0 +1,9 @@
+def making_value(agents):
+  agent1 = random.choice(agents)
+  agent2 = random.choice(agents)
+
+  a = random.random() # 0から1の乱数を生成
+
+  if agent1.wealth >=1 :
+    agent2.wealth = agent2.wealth + 1 + a 
+    agent1.wealth = agent1.wealth - 1 + a 

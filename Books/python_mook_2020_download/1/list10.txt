@@ -1,0 +1,6 @@
+for book in books:
+    bookdata = [v for k, v in book.items()]
+    wsbk.append(bookdata[:2])
+    if len(bookdata[2]) > 0:
+        img = Image(bookdata[2])
+        wsbk.add_image(img, 'C' + str(books.index(book)+2))

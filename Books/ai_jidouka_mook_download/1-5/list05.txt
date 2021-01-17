@@ -1,0 +1,20 @@
+# LightGBM‚ÌŠwK
+X_trn, X_val, y_trn, y_val = train_test_split(X_train, y_train, test_size=5000, random_state=0)
+
+lgb_dataset_trn = lgb.Dataset(X_trn, label=y_trn, categorical_feature='auto')
+lgb_dataset_val = lgb.Dataset(X_val, label=y_val, categorical_feature='auto')
+
+params = {
+    'objective' : 'rmse', 
+    'learning_rate' : 0.1, 
+    'max_depth' : 4, 
+}
+
+model = lgb.train(
+    params=params, 
+    train_set=lgb_dataset_trn, 
+    valid_sets=[lgb_dataset_val], 
+    num_boost_round=10000, 
+    early_stopping_rounds=100, 
+    verbose_eval=100
+)

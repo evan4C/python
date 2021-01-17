@@ -1,0 +1,12 @@
+# テーブル作成をやり直したいときに重宝する
+DROP_PEOPLE = "DROP TABLE IF EXISTS people"
+
+# 3重引用符を使うと自由に改行して見やすくできる
+CREATE_PEOPLE = '''CREATE TABLE people 
+(id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT,
+land TEXT,
+born INTEGER,
+bio TEXT)'''
+
+

@@ -1,0 +1,17 @@
+class TestIO:
+  def __init__(self, num):
+    self.num = num
+    self.messages = []
+
+  def print(self, message):
+    self.messages.append(message)
+
+  def input(self):
+    return self.num
+
+game = Janken()
+test_io = TestIO(1)
+flow = GameFlow(game, test_io)
+flow.play()
+
+# test_io.messages をチェックする

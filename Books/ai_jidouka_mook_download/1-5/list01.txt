@@ -1,0 +1,2 @@
+%matplotlib inline
+%config InlineBackend.figure_formats = {'png', 'retina'}

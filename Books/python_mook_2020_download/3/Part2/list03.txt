@@ -1,0 +1,11 @@
+def giving_money(agents):
+  agent1 = random.choice(agents)
+  agent2 = random.choice(agents)
+
+  if agent1.wealth >= 1:
+    agent2.wealth +=1 
+    agent1.wealth -=1
+
+
+
+

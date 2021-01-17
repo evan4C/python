@@ -1,0 +1,8 @@
+def tax(p):
+  return p * 1.1
+
+def report(p):
+  print(str(p) + 'の税込価格は、' + str(int(tax(p))) + '円です。')
+
+report(12300)
+report(12345)

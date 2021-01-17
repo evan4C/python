@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TensorFlow.js MNIST</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+
+  <script src="lib.js" type="module"></script>
+
+  <script src="script.js" type="module"></script>
+  <style type="text/css">
+    .is-selected {
+      background-color: blue;
+      color: white;
+      line-height:1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <p id="loading-message">学習モデルの作成中です。しばらくお待ち下さい。</p>
+  <div id="main" style="display:none;">
+    <canvas id="pad" width="280" height="280"></canvas>
+    <div>
+      <input type="button" id="predict-button" value="認識" />
+      <input type="button" id="reset-button" value="リセット" />
+    </div>
+    <br />
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>確率</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>0</th>
+          <td class="confidence">-</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td class="confidence">-</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td class="confidence">-</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td class="confidence">-</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td class="confidence">-</td>
+        </tr>
+        <tr>
+          <th>5</th>
+          <td class="confidence">-</td>
+        </tr>
+        <tr>
+          <th>6</th>
+          <td class="confidence">-</td>
+        </tr>
+        <tr>
+          <th>7</th>
+          <td class="confidence">-</td>
+        </tr>
+        <tr>
+          <th>8</th>
+          <td class="confidence">-</td>
+        </tr>
+        <tr>
+          <th>9</th>
+          <td class="confidence">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

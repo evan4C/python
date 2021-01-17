@@ -1,0 +1,249 @@
+import openpyxl as px
+
+
+wbw = px.load_workbook('weather.xlsx', data_only=True)
+
+
+print(wbw.sheetnames)
+
+
+wsw = wbw['Sheet1']
+
+
+for row in wsw.values:
+    for value in row:
+        print(value)
+
+
+for rowobj in wsw:
+    for cellobj in rowobj:
+        print (cellobj.value)
+
+
+wbk = px.load_workbook('kaikei.xlsx', data_only= True)
+wsk = wbk['Sheet1']
+
+for row in wsk.values:
+    for value in row:
+        print(value)
+
+
+for row in wsk.values:
+    cellstr = ""
+    for value in row:
+        if value is None:
+            value = "None"
+        cellstr += " %s " % value
+    print(cellstr)
+
+
+in17 = wsk['A4:B8']
+
+
+for row in in17:
+    print(row[0].value, row[1].value)
+
+
+new_wbk = px.Workbook()
+
+
+wsk17_in = new_wbk.create_sheet("2017収入", 0)
+
+
+wsk17_in.append(["項目", "金額"])
+
+
+for row in wsk['A4:B8']:
+    wsk17_in.append([row[i].value for i in range(len(row))]) # リスト内包表記
+
+
+wsk17_out = new_wbk.create_sheet("2017支出", 1)
+wsk17_out.append(["項目", "金額"])
+for row in wsk['D4:E11']:
+    wsk17_out.append([row[i].value for i in range(len(row))])
+
+
+new_wbk.save('new_kaikei.xlsx')
+
+
+wsk17_in['B6'] = '=SUM(B2:B5)'
+# ファイルを再生成
+new_wbk.save('new_kaikei.xlsx') 
+
+
+from openpyxl.formula.translate import Translator 
+wsk17_in['B6'] = Translator('=SUM(B4:B7)', 'B8').translate_formula('B6')
+# ファイルを再生成
+new_wbk.save('new_kaikei.xlsx') 
+
+
+good_wbk = px.Workbook()
+wsk_in = good_wbk.create_sheet('収入', 0)
+
+
+wsk_in.append(['項目','2017年度','2018年度'])
+
+
+for row in wsk['A4:B8']:
+    wsk_in.append([row[i].value for i in range(len(row))])
+
+
+good_wbk2 = px.load_workbook('good_kaikei.xlsx', data_only=True)
+wsk_in = good_wbk2[good_wbk2.sheetnames[0]]
+
+
+for row in wsk_in['B2:C6']:
+    for cell in row:
+        cell.number_format = '#,##0'
+
+
+good_wbk2.save('good_kaikei2.xlsx')
+
+
+wbr = px.load_workbook('report.xlsx', data_only=True)
+wsr = wbr['Sheet1']
+wsr.delete_cols(2) # B列を削除
+
+
+wbm = px.Workbook()
+wsm = wbm.create_sheet("Report", 0)
+
+
+with open('manuscript.txt') as f:
+  eof = False
+  while eof == False:
+    # ファイルを読み込んでいく
+    # 読み込む中身がなくなったらeof = True
+f.close()   
+
+
+print(wsm.max_row)
+
+
+wsm.move_range("A30:A57", rows= -29, cols=2)
+
+
+wsm.column_dimensions['A'].width = 32
+
+
+wsm.column_dimensions['C'].width = 32
+wsm.column_dimensions['B'].width = 1
+
+
+wbm.save('styled.xlsx') 
+
+
+wbbr = px.Workbook()
+
+
+wsbr = wbbr.active
+
+
+wsbr.append(months)
+
+
+wsbr.insert_cols(1)
+
+
+for i in range(len(drinks)):
+  wsbr.append([drinks[i], apr[i], may[i], jun[i]])
+
+
+wbbr.save('barchart.xlsx') 
+
+
+from openpyxl.chart import BarChart, Reference
+
+
+ch = BarChart()
+ch.type = 'col'
+
+
+ch.title = '第一期の飲料注文件数'
+ch.x_axis.title = 'ドリンク'
+ch.y_axis.title = '注文件数'
+
+
+data = Reference(wsbr, min_col=2, min_row=1, max_col=4, max_row=7)
+
+
+ch.add_data(data, titles_from_data=True)
+
+
+ctgrs = Reference(wsbr, min_col=1, min_row=2, max_row=7) # 列見出しの部分を指定
+ch.set_categories(ctgrs)
+
+
+wsbr.add_chart(ch, "E1")
+
+
+wbpp = px.load_workbook('people.xlsx', data_only=True)
+wspp = wbpp[wbpp.sheetnames[0]]
+
+for row in wspp.values: 
+    print(row)
+
+
+wspp.delete_rows(1)
+
+
+import sqlite3
+
+# データベース（DB）ファイルを開くか新規作成
+conn = sqlite3.connect('DBファイル名') 
+c = conn.cursor() # 「カーソル」を取得
+c.execute('SQLコマンド')
+# テーブル作成や書き込みを行った場合に実行
+conn.commit() 
+conn.close() # 接続解除
+
+
+import sqlite3
+conn = sqlite3.connect('people.db') 
+c = conn.cursor()
+c.execute(DROP_PEOPLE) 
+c.execute(CREATE_PEOPLE)
+
+
+for row in wspp.values:
+    sqlstr = "INSERT INTO people ('name','land','born','bio') VALUES(?,?,?,?)"
+    c.execute(sqlstr, row)
+conn.commit()  
+
+
+for resultrow in c.execute('SELECT * FROM people ORDER BY born'):
+    print(resultrow)
+
+
+wbbk = px.Workbook()
+wsbk = wbbk.active
+wsbk.append(['タイトル','著者','ブックカバー'])
+
+
+from openpyxl.drawing.image import Image
+
+
+img = Image('apple.png')
+wsbk.add_image(img, 'C1')
+
+
+wbbk.save('books.xlsx') 
+
+
+wsbk.row_dimensions[2].height = 135  
+
+
+wsbk.column_dimensions['A'].width = 30
+wsbk.column_dimensions['B'].width = 20
+
+
+from openpyxl.styles import Alignment 
+Cellオブジェクト.alignment = Alignment(vertical='center', wrap_text=True)
+
+
+
+
+
+
+
+

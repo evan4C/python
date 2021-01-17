@@ -1,0 +1,5 @@
+books = [{'title':'プリンピキア', 'author':'ニュートン', 'cover':'apple.png'},
+         {'title':'化学原論', 'author':'ラボアジェ', 'cover':'chem.png'},
+         {'title':'Goettliche und menschliche Gerechtigkeit', 'author':'Zwingli', 'cover':''},
+         {'title':'熱の解析的理論', 'author':'フーリエ', 'cover':'wave.png'},
+         {'title':'Astroscopia Compendiaria', 'author':'Huygens', 'cover':''}]  

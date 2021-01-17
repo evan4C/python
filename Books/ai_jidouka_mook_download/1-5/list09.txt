@@ -1,0 +1,6 @@
+X_test = create_feature(test_data)
+y_test = test_data["¬–ñ‰¿Ši"]
+
+test_pred = model.predict(X_test)
+test_mape = calc_mape(y_test.values, test_pred)
+print(f'test mape : {test_mape:.3f}%')

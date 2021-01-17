@@ -1,0 +1,15 @@
+from openpyxl.styles import Border, Side
+from openpyxl.styles import PatternFill
+
+for row in wsk_in.iter_rows(max_row=1, max_col=3):
+  for cell in row:
+    cell.border = Border(bottom=Side(style='thin'))
+
+for row in wsk_in.iter_rows(min_row=6, max_row=6, max_col=3):
+  for cell in row:
+    cell.border = Border(top=Side(style='double')) # 2重線
+
+for col in wsk_in.iter_cols(max_col=1, max_row=6): 
+  for cell in col:
+    # 単色で、薄いグレー
+    cell.fill = PatternFill("solid", fgColor="EEEEEE") 

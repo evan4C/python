@@ -1,0 +1,1 @@
+print(word_model.wv.most_similar(['êlä‘']))

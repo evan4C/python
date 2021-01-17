@@ -1,0 +1,21 @@
+class Janken:
+  HANDS = ['グー', 'チョキ', 'パー']
+  def description(self):
+    return "グー: 0, チョキ: 1, パー: 2"
+
+  def your_and_enemy_hand(self, you, enemy):
+    return 'あなた: {0}, \
+      相手: {1}'.format(self.HANDS[you], \
+      self.HANDS[enemy])
+
+  def enemy_hand(self):
+    return random.randint(0, len(self.HANDS) - 1)
+
+  def judge(self, you, enemy):
+    result = (you - enemy) % len(self.HANDS)
+    if result == 0:
+      return "DRAW"
+    elif result == 1:
+      return "LOSE"
+    else:
+      return "WIN"

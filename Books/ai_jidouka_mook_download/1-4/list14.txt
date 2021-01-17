@@ -1,0 +1,51 @@
+def result_log(save_results=False):
+
+  '''正解ラベルの一覧を取得する'''
+  y_true = [WRITERS[data[1]] for data in test_data]
+  '''推測したラベルの一覧を格納するリストを定義する'''
+  y_pred = list()
+  '''テストデータで推論を行う際はパラメータの更新を行わないようにする'''
+  with torch.no_grad():
+    correct_answers = 0
+    for sentence, writer_index in test_data:
+
+      '''テストデータの中身をベクトルで置き換える'''
+      '''Word2Vecのモデルに存在しない単語が出てきた場合は適当なベクトルで置き換える'''
+      sentence_vec = [word_model.wv[word] if word in word_model.wv.vocab
+                     else rand(embedding_dim).astype(np.float32) for word in sentence]
+
+      '''すぐ上で用意したベクトルのPyTorchのテンソルに変換する'''
+      sentence_in = torch.tensor(sentence_vec).view(len(sentence), 1, -1).to(device)
+
+      '''テストデータについてLSTMに通して推論を行う'''
+      output = lstm_model(sentence_in)
+      _, pred = torch.max(output, 1)
+      y_pred.append(pred)
+      target = torch.tensor([writer_index]).to(device)
+      if pred == target:
+        correct_answers += 1
+
+    print('Test data accuracy: ', correct_answers / len(test_data))
+    '''推論結果をNumPyの配列に変換する'''
+    y_pred = torch.tensor(y_pred).numpy()
+    '''推論結果から作者名を取り出す'''
+    y_pred = [WRITERS[pre] for pre in y_pred]
+    '''各作者についての詳しいレポートを出力する'''
+    report = classification_report(y_true, y_pred)
+    '''推論結果と実際のデータに関する混同行列を出力する'''
+    cof_mat = confusion_matrix(y_true, y_pred)
+    print(report)
+    print(cof_mat)
+    if save_results:
+      with open(os.path.join(base_dir, 'classification_report.txt'), 'w') as f_w:
+        f_w.write(report)
+      with open(os.path.join(base_dir, 'cof_mat.txt'), 'w') as f_w:
+        f_w.write(str(cof_mat))
+
+def save_model(model, epoch=None):
+# モデルを保存する関数。10エポックごとと学習終了後に保存
+  if epoch:
+    path = os.path.join(base_dir, str(epoch) + '-model.pth')
+  else:
+    path = os.path.join(base_dir, 'model.pth')
+  torch.save(model.state_dict(), path)

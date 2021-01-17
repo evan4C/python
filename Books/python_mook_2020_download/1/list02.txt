@@ -1,0 +1,10 @@
+in18row = 17
+for col in wsk_in.iter_cols(min_row=2, max_row=6, min_col=3, max_col=3): 
+    for cell in col:
+        cell.value = wsk['B' + str(in18row)].value
+        in18row += 1
+            
+wsk_in.move_range('C3:C5', rows=1)
+wsk_in['C3'] = 0
+
+good_wbk.save('good_kaikei.xlsx')

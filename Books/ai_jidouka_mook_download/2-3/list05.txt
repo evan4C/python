@@ -1,0 +1,351 @@
+import sys
+import os
+import shutil
+import zipfile
+import glob
+import pprint
+import io
+
+import tkinter
+import tkinter.filedialog
+import openpyxl
+import docx
+import pptx
+import win32com.client
+from PIL import Image
+import pyocr
+
+from pdfminer.pdfinterp import PDFResourceManager
+from pdfminer.converter import TextConverter
+from pdfminer.pdfinterp import PDFPageInterpreter
+from pdfminer.pdfpage import PDFPage
+from pdfminer.layout import LAParams
+from PyPDF2 import PdfFileReader
+
+def in_text(text):
+  if (type(text) == str and
+    any((keyword in text) for keyword in keywords)):
+    return True
+
+  return False
+
+def in_msoffice_xml(target):
+  target_path = os.path.join(DIR_TMP, '**', target)
+  
+  for xmlfile in glob.glob(target_path, recursive=True):
+    with open(xmlfile, encoding='utf-8') as f:
+      xmlcontents = f.read()
+
+    if in_text(xmlcontents):
+      return True
+
+  return False
+
+def in_msoffice_img(target):
+  target_path = os.path.join(DIR_TMP, '**', target) 
+  img_files = glob.glob(target_path, recursive=True)
+  
+  for img_file in img_files:
+    img_text = tool.image_to_string(
+      Image.open(img_file),
+      lang = 'jpn+eng',
+      builder = pyocr.builders.TextBuilder()
+    )
+
+    if in_text(img_text):
+      return True
+    
+  return False
+
+def in_xlsx_sheetnames(wb):
+  for sheetname in wb.sheetnames:
+    if in_text(sheetname):
+      return True
+
+  return False
+
+def in_xlsx_cells(wb):
+  for ws in wb.worksheets:
+    for row in ws.values:
+      for cell in row:
+        if in_text(cell):
+          return True
+    
+  return False
+
+def in_xlsx_shapes(file_path):
+  try:
+    wb = excelApp.Workbooks.Open(file_path)
+  except:
+    unsupported_files.append(file_path)
+    return False
+
+  for ws in wb.Worksheets:
+    for shape in ws.Shapes:
+      if not shape.TextFrame2.HasText:
+        continue
+
+      shape_text = shape.TextFrame.Characters().Text
+
+      if in_text(shape_text):
+        wb.Close()
+        return True
+
+  wb.Close()
+  return False
+
+def in_docx_paragraph(doc):
+  for paragraph in doc.paragraphs:
+    if in_text(paragraph.text):
+      return True
+
+  return False
+
+def in_docx_headerfooter(doc):
+  for section in doc.sections:
+    for header_paragraph in section.header.paragraphs:
+      if in_text(header_paragraph.text):
+        return True
+
+    for footer_paragraph in section.footer.paragraphs:
+      if in_text(footer_paragraph.text):
+        return True
+
+  return False
+
+def in_docx_shapes(file_path):
+  try:
+    doc = wordApp.Documents.Open(file_path)
+  except:
+    unsupported_files.append(file_path)
+    return False
+
+  for shape in doc.Shapes:
+    if not shape.TextFrame.HasText:
+      continue
+
+    shape_text = shape.TextFrame.TextRange.Text
+
+    if in_text(shape_text):
+      doc.Close()
+      return True
+
+  doc.Close()
+  return False
+
+def in_pptx_shapes(prs):
+  for slide in prs.slides:
+    for shape in slide.shapes:
+      if not shape.has_text_frame:
+        continue
+
+      for paragraph in shape.text_frame.paragraphs:
+        if in_text(paragraph.text):
+          return True
+
+  return False
+
+def in_pptx_note(prs):
+  for slide in prs.slides:
+    note_text = slide.notes_slide.notes_text_frame.text
+
+    if in_text(note_text):
+      return True
+
+  return False
+
+def in_pdf_text(fp):
+  stdout.truncate(0)
+
+  rscmgr = PDFResourceManager()
+  lprms = LAParams()
+  device = TextConverter(rscmgr, stdout, laparams=lprms)
+  intprtr = PDFPageInterpreter(rscmgr, device)
+  for page in PDFPage.get_pages(fp):   
+    intprtr.process_page(page)
+
+  pdf_text = stdout.getvalue()
+  device.close()
+  
+  if in_text(pdf_text):
+    return True
+  
+  return False
+
+def in_pdf_img(fp):
+  reader = PdfFileReader(fp)
+  pgnum = reader.getNumPages()
+
+  for i in range(pgnum):   
+    pg = reader.getPage(i)
+
+    if '/XObject' in pg['/Resources']:
+      xobjs = pg['/Resources']['/XObject']
+      
+      for key, obj in xobjs.items():
+        item = obj.getObject()
+
+        if item['/Subtype'] == '/Image':
+          if  item['/Filter'] == '/FlateDecode':
+            size = (item['/Width'], item['/Height'])
+            data = item.getData()
+            img = Image.frombytes('RGB', size, data)
+          elif item['/Filter'] == '/DCTDecode':
+            data = item.getData()
+            img = Image.open(io.BytesIO(data))
+          else:
+            break
+
+          img_text = tool.image_to_string(
+            img,
+            lang = 'jpn+eng',
+            builder = pyocr.builders.TextBuilder()
+          )
+
+          if in_text(img_text):
+            return True
+
+  return False
+
+def in_xlsx(file_path):
+  try:
+    wb = openpyxl.load_workbook(file_path, data_only=True)
+  except:
+    unsupported_files.append(file_path)
+    return False
+
+  if (in_xlsx_sheetnames(wb) or
+    in_xlsx_cells(wb) or
+    in_xlsx_shapes(file_path)):
+    return True
+
+  with zipfile.ZipFile(file_path) as zf:
+    zf.extractall(DIR_TMP)
+  
+  if in_msoffice_img('image*.*'):
+    shutil.rmtree(DIR_TMP) 
+    return True
+  
+  shutil.rmtree(DIR_TMP) 
+  return False
+
+def in_docx(file_path):
+  try:
+    doc = docx.Document(file_path)
+  except:
+    unsupported_files.append(file_path)
+    return False
+
+  if (in_docx_paragraph(doc) or
+    in_docx_headerfooter(doc) or
+    in_docx_shapes(file_path)):
+    return True
+
+  with zipfile.ZipFile(file_path) as zf:
+    zf.extractall(DIR_TMP)
+
+  if (in_msoffice_xml('header*.xml') or
+     in_msoffice_img('image*.*')):
+    shutil.rmtree(DIR_TMP)
+    return True
+  
+  shutil.rmtree(DIR_TMP)
+  return False
+
+def in_pptx(file_path):
+  try:
+    prs = pptx.Presentation(file_path)
+  except:
+    unsupported_files.append(file_path)
+    return False
+
+  if (in_pptx_shapes(prs) or
+    in_pptx_note(prs)):
+    return True
+
+  with zipfile.ZipFile(file_path) as zf:
+    zf.extractall(DIR_TMP)
+
+  if (in_msoffice_xml('data*.xml') or
+     in_msoffice_img('image*.*')):
+    shutil.rmtree(DIR_TMP)
+    return True
+  
+  shutil.rmtree(DIR_TMP)
+  return False
+
+def in_pdf(file_path):
+  try:
+    with open(file_path, 'rb') as fp:
+      if (in_pdf_text(fp) or
+        in_pdf_img(fp)):
+        return True
+
+  except:
+    unsupported_files.append(file_path)
+    return False
+  
+  return False
+
+keywords = ['社外秘', '機密', '取扱注意', 
+      '極秘','Confidential']
+
+DIR_TMP = 'tmp'
+
+unsupported_files = []
+
+excelApp = win32com.client.Dispatch('Excel.Application')
+wordApp = win32com.client.Dispatch('Word.Application')
+
+stdout = io.StringIO()
+
+tools = pyocr.get_available_tools()
+tool = tools[0]  
+
+rt = tkinter.Tk()
+rt.withdraw()
+msg = '書類のフォルダーを選択してください。'
+document_dir_path = tkinter.filedialog.askdirectory(title=msg)
+if not document_dir_path:
+  print('フォルダーを選んでください。')
+  sys.exit()
+
+msg = '移動先のフォルダーを選択してください。'
+output_dir_path = tkinter.filedialog.askdirectory(title=msg)
+if not output_dir_path:
+  print('フォルダーを選んでください。')
+  sys.exit()
+
+for root, dirs, files in os.walk(document_dir_path):
+  for dir in dirs:
+    dir_path = os.path.join(root, dir)
+    print('Target dir:', dir_path)
+
+    if in_text(dir):
+      shutil.move(dir_path, output_dir_path)
+      print('moved!')
+
+  for file in files:
+    file_path = os.path.join(root, file)
+    print('Target file:', file_path)
+
+    if in_text(file):
+      shutil.move(file_path, output_dir_path)
+      print('moved!')
+      continue
+
+    ext = os.path.splitext(file)[1]
+    
+    if ((ext == '.xlsx' and in_xlsx(file_path)) or
+      (ext == '.docx' and in_docx(file_path)) or
+      (ext == '.pptx' and in_pptx(file_path)) or
+      (ext == '.pdf' and in_pdf(file_path))):
+      shutil.move(file_path, output_dir_path)
+      print('moved!')
+
+print('\n\n開けなかったファイル')
+pprint.pprint(unsupported_files)
+
+excelApp.Quit()
+wordApp.Quit()
+stdout.close()

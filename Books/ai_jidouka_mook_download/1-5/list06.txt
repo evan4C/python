@@ -1,0 +1,12 @@
+# valid‚ÌŠm”F
+def calc_mape(y_true, y_pred):
+    data_num = len(y_true)
+    mape = (np.sum(np.abs(y_pred-y_true)/y_true)/data_num)*100
+    return mape
+
+train_pred = model.predict(X_train)
+train_mape = calc_mape(y_train.values, train_pred)
+val_pred = model.predict(X_val)
+val_mape = calc_mape(y_val.values, val_pred)
+print(f'train mape : {train_mape:.3f}%')
+print(f'valid mape : {val_mape:.3f}%')

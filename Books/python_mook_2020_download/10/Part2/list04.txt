@@ -1,0 +1,21 @@
+from collections import defaultdict
+
+def names_by_group(name_and_group_list):
+    _names_by_group = defaultdict(set)
+    for group, name in name_and_group_list:
+        _names_by_group[group].add(name)
+
+    return _names_by_group
+
+name_and_group_list = [
+    ["A", "なかむらけんこ"],
+    ["A", "おおじまりょうた"],
+    ["B", "こはやしゆう"],
+    ["B", "こはやしゆう"],
+    ["B", "さいとうまなふ"],
+]
+
+_names_by_group = names_by_group(name_and_group_list)
+names = _names_by_group["B"]
+
+print(names)

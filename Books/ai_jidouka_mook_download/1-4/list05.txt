@@ -1,0 +1,21 @@
+WRITERS = ['natsume', 'dazai', 'akutagawa', 'fukuzawa', 'mori'] # 作者のリスト
+train_sentences = dict() # 訓練データの辞書（キーは作者の名前、要素は文のリスト）
+test_sentences = dict() # テストデータの辞書（キーは作者の名前、要素は文のリスト）
+for writer in WRITERS: # ['natsume', 'dazai', 'akutagawa', fukuzawa', 'mori']
+  if not os.path.isdir(os.path.join(base_dir, writer)): # 作者名のディレクトリがあるかどうかをチェック
+    continue
+  train_sentences[writer] = list() # 訓練用の各作者の文を入れるリスト
+  test_sentences[writer] = list() # テスト用の各作者の文を入れるリスト
+  '''各ディレクトリの全テキストファイルを取得'''
+  files = glob.glob(os.path.join(base_dir, writer, '*.txt'))
+  '''上で得たテキストファイルを4:1で訓練データとテストデータにする'''
+  train_files = files[:len(files) * 4 // 5]
+  test_files = files[len(files) * 4 // 5:]
+
+  '''ファイルから文章を読み込み、上で定義したpreprocess関数に通してリストに格納していく'''
+  for train_file in train_files:
+    with codecs.open(train_file, 'r', 'shift_jis') as f_r:
+      train_sentences[writer].extend(preprocess(f_r.readlines()))
+  for test_file in test_files:
+    with codecs.open(test_file, 'r', 'shift_jis') as f_r:
+      test_sentences[writer].extend(preprocess(f_r.readlines()))

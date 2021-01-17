@@ -1,0 +1,13 @@
+def ranking(data, name_fnc, sort_value_fnc):
+  for rank, v in enumerate(sorted(data, key=sort_value_fnc, reverse=True)):
+    name = name_fnc(v)
+    value = sort_value_fnc(v)
+    print('{0}:{1} {2}'.format(rank + 1, name, value))
+
+data = [{ "name": "川崎", "point": 69 }, 
+        { "name": "鹿島", "point": 56 }, 
+        { "name": "広島", "point": 57 }]
+ranking(data, lambda v: v["name"], lambda v: v["point"])
+
+data = [["アイス", 1000], ["クッキー", 1200], ["団子", 800]]
+ranking(data, lambda v: v[0], lambda v: v[1])

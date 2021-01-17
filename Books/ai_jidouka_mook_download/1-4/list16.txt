@@ -1,0 +1,7 @@
+'''LSTMモデルを生成する'''
+lstm_model = LSTM(embedding_dim).to(device)
+
+'''optimizerを定義する'''
+optimizer = optim.Adam(lstm_model.parameters(), lr=lr)
+'''訓練データの個数から1エポック中のループ回数を決定する'''
+loop_num = len(train_data) // batch_size

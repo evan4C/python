@@ -1,0 +1,14 @@
+model.dropout1 = tf.keras.layers.Dropout(0.0)
+data = data.append(pd.DataFrame.from_dict({
+    "‰w–¼": ["V‹´"],
+    "Œš•¨\‘¢": ["SRC"],
+    "“k•à•ª": [10],
+    "ê—L–ÊÏ": [30],
+    "ŠÔæ‚è": ["R"],
+    "•”‰®”": [1],
+    "’z”N": ["198001"],
+    "ŠİŠK": ["5"],
+    "¬–ñ‰¿Ši": [-1]
+})).reset_index(drop=True)
+X = create_feature(data)
+model.predict_on_batch(X[-1:])

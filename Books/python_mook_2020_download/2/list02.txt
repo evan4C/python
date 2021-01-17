@@ -1,0 +1,26 @@
+from pdfminer.pdfinterp import PDFResourceManager
+from pdfminer.converter import TextConverter
+from pdfminer.pdfinterp import PDFPageInterpreter
+from pdfminer.pdfpage import PDFPage
+from pdfminer.layout import LAParams
+from io import StringIO
+
+fp = open("sample1.pdf", 'rb')
+outfp = StringIO()
+
+rmgr = PDFResourceManager() 
+lprms = LAParams()
+device = TextConverter(rmgr, outfp, laparams=lprms)
+
+iprtr = PDFPageInterpreter(rmgr, device)
+
+for page in PDFPage.get_pages(fp):
+  iprtr.process_page(page)
+
+text = outfp.getvalue()
+
+outfp.close()
+device.close()
+fp.close()
+
+print(text) 

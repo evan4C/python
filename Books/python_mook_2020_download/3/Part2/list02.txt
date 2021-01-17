@@ -1,0 +1,7 @@
+class Agent:
+  def __init__(self, unique_id, initial_wealth):
+    self.unique_id = unique_id  # id番号
+    self.wealth = initial_wealth # 初期資産
+
+
+

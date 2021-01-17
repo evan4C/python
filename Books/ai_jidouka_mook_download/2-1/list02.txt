@@ -1,0 +1,96 @@
+import sys
+import os
+import shutil
+from datetime import datetime, date
+
+import tkinter, tkinter.filedialog
+from PIL import Image
+from PyQt5.QtWidgets import QCalendarWidget, QApplication
+from PyQt5.QtCore import QDate
+
+def archive_photo():
+  OUTPUT_SUB_PRE = 'photoBefore' # アーカイブ用フォルダー名の固定文字部分
+  EXIF_DTO = 36867 # Exifの撮影日（DateTimeOriginal）のタグ番号
+  EXT_JPG = '.jpg'
+  SN = '({})' # 同名ファイルに付与する連番部分
+
+  # カレンダーで選択された基準日を取得
+  dt_archive = calendar.selectedDate().toPyDate() # QDate型からdate型に変換
+  calendar.close()
+
+  # アーカイブ用フォルダー作成
+  output_sub_dir = OUTPUT_SUB_PRE + dt_archive.strftime('%Y%m%d') # フォルダー名作成
+  output_path = os.path.join(output_dir_path, output_sub_dir)
+  os.makedirs(output_path, exist_ok=True)
+
+  # 基準日以前の写真ファイルを移動
+  for dirpath, dirs, files in os.walk(photo_dir_path): # 写真フォルダー内を走査
+    for f in files: # ファイルを順に処理
+      ext = os.path.splitext(f)[1] # 拡張子取得
+      if (ext != EXT_JPG and ext != EXT_JPG.upper()): # .jpgか.JPGでなければ処理しない
+        continue
+
+      # 撮影日取得
+      fpath = os.path.join(dirpath, f)
+      img = Image.open(fpath)
+      exif = img._getexif()
+      img.close()
+      if (exif is None): # EXIFがなければ処理しない
+        continue
+
+      dt = datetime.strptime(exif[EXIF_DTO], '%Y:%m:%d %H:%M:%S').date() # date型に変換
+
+      # 撮影日が基準日以前なら移動
+      if (dt <= dt_archive):
+        save_path = output_path
+        save_file = os.path.join(output_path, f)
+
+        # 同名ファイルが移動先に存在するなら、ファイル名に連番を付与
+        if(os.path.exists(save_file)): # 同名ファイルの存在チェック
+          # 「ファイル名(連番)」でのパス作成
+          num = 1
+          while(True):
+            save_path = os.path.splitext(save_file)[0] + SN.format(num) + ext # 連番付与
+            if(not os.path.exists(save_path)):
+              break
+            num += 1
+
+        # ファイル移動
+        shutil.move(fpath, save_path)
+
+  # 移動先フォルダーを圧縮
+  shutil.make_archive(output_path, 'zip', output_path) # ZIP圧縮
+  shutil.rmtree(output_path) # 圧縮前フォルダー削除
+
+# 写真フォルダー選択
+root = tkinter.Tk()
+root.withdraw()
+msg = '写真のフォルダーを選択してください。'
+photo_dir_path = tkinter.filedialog.askdirectory(title=msg)
+if (not photo_dir_path): # ［キャンセル]クリック時の処理
+  print('フォルダーを選んでください。')
+  sys.exit()
+
+# アーカイブ作成先フォルダー選択
+msg = 'アーカイブ作成先のフォルダーを選択してください。'
+output_dir_path = tkinter.filedialog.askdirectory(title=msg)
+if (not output_dir_path): # ［キャンセル]クリック時の処理
+  print('フォルダーを選んでください。')
+  sys.exit()
+
+# カレンダー生成
+app = QApplication.instance()
+if (app is None):
+  app = QApplication([])
+
+calendar = QCalendarWidget()
+calendar.setGridVisible(True)
+calendar.setGeometry(600, 400, 450, 350)
+calendar.setWindowTitle('アーカイブ基準日を選択')
+
+# カレンダーの日付クリックで呼び出す関数を設定
+calendar.clicked[QDate].connect(archive_photo)
+
+# カレンダー表示
+calendar.show()
+app.exec_()

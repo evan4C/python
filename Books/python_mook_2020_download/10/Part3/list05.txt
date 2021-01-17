@@ -1,0 +1,24 @@
+class SystemIO:
+  def print(self, message):
+    print(message)
+
+  def input(self):
+    return input()
+
+class GameFlow:
+  def __init__(self, game, flow_io):
+    self.game = game
+    self.flow_io = flow_io
+
+  def play(self):
+    self.flow_io.print(self.game.description())
+    you = int(self.flow_io.input())
+    enemy = self.game.enemy_hand()
+    self.flow_io.print(self.game.your_and_enemy_hand(you, enemy))
+    result = self.game.judge(you, enemy)
+    self.flow_io.print(result)
+
+game = Janken()
+flow_io = SystemIO()
+flow = GameFlow(game, flow_io)
+flow.play()

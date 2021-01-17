@@ -1,0 +1,6 @@
+# data load
+data = pd.read_csv("dummy_data.csv")
+#train test split
+train_data, test_data = train_test_split(data, test_size=5000, random_state=0)
+print(f'num of train data : {len(train_data)}')
+print(f'num of test data : {len(test_data)}')

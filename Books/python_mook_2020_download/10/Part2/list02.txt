@@ -1,0 +1,24 @@
+def names_by_group(name_and_group_list):
+    _names_by_group = {}
+    for name_and_group in name_and_group_list:
+        group = name_and_group[0]
+        name = name_and_group[1]
+        if group not in _names_by_group:
+            _names_by_group[group] = []
+        if name not in _names_by_group[group]:
+            _names_by_group[group].append(name)
+
+    return _names_by_group
+
+name_and_group_list = [
+    ["A", "なかむらけんごう"],
+    ["A", "おおじまりょうた"],
+    ["B", "こはやしゆう"],
+    ["B", "こはやしゆう"],
+    ["B", "さいとうまなふ"],
+]
+
+_names_by_group = names_by_group(name_and_group_list)
+names = _names_by_group["B"]
+
+print(names)

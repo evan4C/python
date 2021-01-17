@@ -1,0 +1,12 @@
+#Analog joystick test
+from gpiozero import MCP3002
+import time
+
+ch0 = MCP3002(0)  #A/Dコンバータ  チャンネル0初期化
+ch1 = MCP3002(1)  #A/Dコンバータ  チャンネル1初期化
+while True:
+    x = ch0.value
+    y = ch1.value
+    print("x="+str(x)+" y="+str(y))
+    time.sleep(1)
+    

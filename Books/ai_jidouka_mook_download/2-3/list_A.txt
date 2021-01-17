@@ -1,0 +1,17 @@
+from PIL import Image
+import pyocr
+
+tools = pyocr.get_available_tools()
+tool = tools[0]
+
+builder = pyocr.builders.TextBuilder(
+    tesseract_layout=3
+)
+
+txt = tool.image_to_string(
+  Image.open('img_ocr/雑誌記事.jpg'),
+  lang='jpn+eng',
+  builder=builder
+)
+
+print(txt)

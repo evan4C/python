@@ -1,0 +1,19 @@
+import ui
+
+def doAction(sender):
+  label = sender.superview['label1']
+  field1 = sender.superview['textfield1']
+  field2 = sender.superview['textfield2']
+  sincho = float(field1.text)
+  taiju = float(field2.text)
+  bmi = int(taiju/(sincho/100)**2 * 100)/100
+  cmt = '適正体重です。'
+  w = int((sincho/100)**2 * 22 * 10)/10
+  if bmi < 18.5:
+    cmt = ' 痩せ過ぎです。'
+  elif bmi > 25:
+    cmt = ' 太り過ぎです。'
+  label.text=str(bmi)+cmt+'\n(適正:'+str(w)+'Kg)'
+
+v = ui.load_view()
+v.present('sheet')
