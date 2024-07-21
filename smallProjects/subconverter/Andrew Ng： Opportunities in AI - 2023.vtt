@@ -1,0 +1,3072 @@
+Kind: captions
+Language: en-US
+
+00:00:00.000 --> 00:00:02.970
+[MUSIC PLAYING]
+
+00:00:05.450 --> 00:00:11.380
+It is my pleasure to welcome
+Dr. Andrew Ng, tonight.
+
+00:00:11.380 --> 00:00:16.770
+Andrew is the managing general
+partner of AI Fund,
+
+00:00:16.770 --> 00:00:22.850
+founder of DeepLearning.AI
+and Landing AI,
+
+00:00:22.850 --> 00:00:26.120
+chairman and
+co-founder of Coursera,
+
+00:00:26.120 --> 00:00:29.870
+and an adjunct professor
+of Computer Science, here
+
+00:00:29.870 --> 00:00:31.130
+at Stanford.
+
+00:00:31.130 --> 00:00:35.570
+Previously, he had started
+and led the Google Brain
+
+00:00:35.570 --> 00:00:39.290
+team, which had helped
+Google adopt modern AI.
+
+00:00:39.290 --> 00:00:43.190
+And he was also director
+of the Stanford AI lab.
+
+00:00:43.190 --> 00:00:49.430
+About eight million people, 1
+in 1,000 persons on the planet,
+
+00:00:49.430 --> 00:00:52.160
+have taken an AI class from him.
+
+00:00:52.160 --> 00:00:56.150
+And through, both, his
+education and his AI work,
+
+00:00:56.150 --> 00:00:58.920
+he has changed numerous lives.
+
+00:00:58.920 --> 00:01:01.370
+Please welcome Dr. Andrew Ng.
+
+00:01:01.370 --> 00:01:04.310
+[APPLAUSE]
+
+00:01:07.250 --> 00:01:08.060
+Thank you, Lisa.
+
+00:01:08.060 --> 00:01:09.480
+It's good to see everyone.
+
+00:01:09.480 --> 00:01:12.110
+So, what I want to do
+today is chat to you
+
+00:01:12.110 --> 00:01:15.050
+about some opportunities in AI.
+
+00:01:15.050 --> 00:01:18.230
+So I've been saying AI
+is a new electricity.
+
+00:01:18.230 --> 00:01:20.750
+One of the difficult things
+to understand about AI
+
+00:01:20.750 --> 00:01:23.760
+is that it is a general
+purpose technology,
+
+00:01:23.760 --> 00:01:26.270
+meaning that it's not
+useful only for one thing
+
+00:01:26.270 --> 00:01:28.550
+but it's useful for lots
+of different applications,
+
+00:01:28.550 --> 00:01:29.780
+kind of like electricity.
+
+00:01:29.780 --> 00:01:32.570
+If I were to ask you, what
+is electricity good for?
+
+00:01:32.570 --> 00:01:35.173
+It's not any one thing,
+it's a lot of things.
+
+00:01:35.173 --> 00:01:37.340
+So what I'd like to do is
+start off sharing with you
+
+00:01:37.340 --> 00:01:39.350
+how I view the
+technology landscape,
+
+00:01:39.350 --> 00:01:43.040
+and this will lead into
+the set of opportunities.
+
+00:01:43.040 --> 00:01:46.430
+So lot of hype, lot of
+excitement about AI.
+
+00:01:46.430 --> 00:01:48.830
+And I think, a good
+way to think about AI
+
+00:01:48.830 --> 00:01:51.180
+is as a collection of tools.
+
+00:01:51.180 --> 00:01:53.880
+So this includes, a technique
+called supervised learning,
+
+00:01:53.880 --> 00:01:56.090
+which is very good at
+recognizing things or labeling
+
+00:01:56.090 --> 00:01:59.870
+things, and generative AI, which
+is a relatively new, exciting
+
+00:01:59.870 --> 00:02:00.710
+development.
+
+00:02:00.710 --> 00:02:04.100
+If you're familiar with AI, you
+may have heard of other tools.
+
+00:02:04.100 --> 00:02:06.630
+But I'm going to talk less
+about these additional tools,
+
+00:02:06.630 --> 00:02:09.509
+and I'll focus today on
+what I think are, currently,
+
+00:02:09.509 --> 00:02:12.060
+the two most important tools,
+which are supervised learning
+
+00:02:12.060 --> 00:02:13.860
+and generative AI.
+
+00:02:13.860 --> 00:02:17.040
+So supervised learning is
+very good at labeling things
+
+00:02:17.040 --> 00:02:20.640
+or very good at computing
+input to outputs or A to B
+
+00:02:20.640 --> 00:02:23.190
+mappings, given an input
+A, give me an output.
+
+00:02:23.190 --> 00:02:27.210
+For Example, given an
+email, we can use supervised
+
+00:02:27.210 --> 00:02:30.060
+learning to label it
+as spam or not spam.
+
+00:02:30.060 --> 00:02:32.100
+The most lucrative
+application of this
+
+00:02:32.100 --> 00:02:34.680
+that I've ever worked on is
+probably online advertising,
+
+00:02:34.680 --> 00:02:37.338
+where given an ad, we
+can label if a user
+
+00:02:37.338 --> 00:02:38.880
+likely to click on
+it, and therefore,
+
+00:02:38.880 --> 00:02:40.350
+show more relevant ads.
+
+00:02:40.350 --> 00:02:43.530
+For self-driving cars, given
+the sensor readings of a car,
+
+00:02:43.530 --> 00:02:45.780
+we can label it with
+where are the other cars.
+
+00:02:45.780 --> 00:02:47.850
+One project, that my
+team, AI Fund, worked on
+
+00:02:47.850 --> 00:02:49.200
+was ship route optimization.
+
+00:02:49.200 --> 00:02:52.590
+Where given a route the ship is
+taking or considering taking,
+
+00:02:52.590 --> 00:02:54.690
+we can label that
+with how much fuel
+
+00:02:54.690 --> 00:02:56.940
+we think this will consume,
+and use this to make
+
+00:02:56.940 --> 00:02:58.980
+ships more fuel efficient.
+
+00:02:58.980 --> 00:03:02.620
+Did a lot of work in automated
+visual inspection in factories.
+
+00:03:02.620 --> 00:03:04.620
+So you can take a picture
+of a smartphone, that
+
+00:03:04.620 --> 00:03:06.840
+was just manufactured and
+label, is there a scratch
+
+00:03:06.840 --> 00:03:08.400
+or any other defect in it.
+
+00:03:08.400 --> 00:03:11.400
+Or if you want to build a
+restaurant review, reputation
+
+00:03:11.400 --> 00:03:14.040
+monitoring system, you can
+have a little piece of software
+
+00:03:14.040 --> 00:03:15.840
+that looks at online
+restaurant reviews,
+
+00:03:15.840 --> 00:03:19.060
+and labels that as positive
+or negative sentiment.
+
+00:03:19.060 --> 00:03:21.840
+So one nice thing, one cool
+thing about supervised learning
+
+00:03:21.840 --> 00:03:24.870
+is that it's not useful for
+one thing, it's useful for all
+
+00:03:24.870 --> 00:03:28.080
+of these different applications,
+and many more, besides.
+
+00:03:28.080 --> 00:03:30.060
+Let me just walk
+through, concretely,
+
+00:03:30.060 --> 00:03:33.630
+the workflow one example
+of a supervised learning,
+
+00:03:33.630 --> 00:03:35.430
+labeling things kind of project.
+
+00:03:35.430 --> 00:03:38.250
+If you want to build a system
+to label restaurant reviews,
+
+00:03:38.250 --> 00:03:41.130
+you then collect a few data
+points or collect a data set.
+
+00:03:41.130 --> 00:03:43.740
+Where it say, the
+pastrami sandwich great,
+
+00:03:43.740 --> 00:03:45.330
+say that is positive.
+
+00:03:45.330 --> 00:03:47.790
+Servers are slow,
+that's negative.
+
+00:03:47.790 --> 00:03:50.340
+My favorite chicken
+curry, that's positive.
+
+00:03:50.340 --> 00:03:52.853
+And here, I've shown
+three data points,
+
+00:03:52.853 --> 00:03:54.270
+but you are building
+this, you may
+
+00:03:54.270 --> 00:03:56.340
+get thousands of
+data points like this
+
+00:03:56.340 --> 00:03:58.410
+or thousands of training
+examples, we call it.
+
+00:03:58.410 --> 00:04:01.140
+And the workflow of a machine
+learning project, of an AI
+
+00:04:01.140 --> 00:04:03.840
+project is, you get
+labeled data, maybe
+
+00:04:03.840 --> 00:04:05.830
+thousands of data points.
+
+00:04:05.830 --> 00:04:08.640
+Then you have an AI
+entry team train an AI
+
+00:04:08.640 --> 00:04:10.590
+model to learn from this data.
+
+00:04:10.590 --> 00:04:12.300
+And then finally,
+you would find,
+
+00:04:12.300 --> 00:04:15.840
+maybe a cloud service to
+run the trained AI model.
+
+00:04:15.840 --> 00:04:18.690
+And then you can feed it,
+best bubble tea I've ever had,
+
+00:04:18.690 --> 00:04:20.640
+and that's positive sentiment.
+
+00:04:20.640 --> 00:04:23.610
+And so, I think the
+last decade was maybe
+
+00:04:23.610 --> 00:04:26.850
+the decade of large scale
+supervised learning.
+
+00:04:26.850 --> 00:04:29.910
+What we found, starting
+about 10, 15 years ago
+
+00:04:29.910 --> 00:04:32.190
+was if you were to
+train a small AI model,
+
+00:04:32.190 --> 00:04:34.440
+so train a small neural
+network or small deep learning
+
+00:04:34.440 --> 00:04:36.450
+algorithm, basically,
+a small AI model,
+
+00:04:36.450 --> 00:04:38.850
+maybe not on a very
+powerful computer,
+
+00:04:38.850 --> 00:04:41.585
+then as you fed it more
+data, its performance
+
+00:04:41.585 --> 00:04:42.960
+would get better
+for a little bit
+
+00:04:42.960 --> 00:04:44.250
+but then it would flatten out.
+
+00:04:44.250 --> 00:04:46.020
+It would plateau,
+and it would stop
+
+00:04:46.020 --> 00:04:49.240
+being able to use the data
+to get better and better.
+
+00:04:49.240 --> 00:04:53.340
+But if you were to train a very
+large AI model, lots of compute
+
+00:04:53.340 --> 00:04:58.200
+on maybe powerful GPUs, then as
+we scaled up the amount of data
+
+00:04:58.200 --> 00:05:00.203
+we gave the machine
+learning model,
+
+00:05:00.203 --> 00:05:01.620
+its performance
+would kind of keep
+
+00:05:01.620 --> 00:05:03.280
+on getting better and better.
+
+00:05:03.280 --> 00:05:06.000
+So this is why when I started
+and led the Google Brain
+
+00:05:06.000 --> 00:05:09.330
+team, the primary mission that
+I directed the team to solve,
+
+00:05:09.330 --> 00:05:11.080
+at the time, was let's
+just build really,
+
+00:05:11.080 --> 00:05:13.870
+really large neural networks,
+that we then fed a lot of data
+
+00:05:13.870 --> 00:05:14.370
+to.
+
+00:05:14.370 --> 00:05:16.350
+And that recipe,
+fortunately, worked.
+
+00:05:16.350 --> 00:05:19.650
+And I think the idea of
+driving large compute
+
+00:05:19.650 --> 00:05:23.820
+and large scale of data, that
+recipe's really helped us,
+
+00:05:23.820 --> 00:05:27.250
+driven a lot of AI progress
+over the last decade.
+
+00:05:27.250 --> 00:05:29.790
+So if that was the
+last decade of AI,
+
+00:05:29.790 --> 00:05:32.250
+I think this decade
+is turning out
+
+00:05:32.250 --> 00:05:34.890
+to be also doing everything
+we had in supervised
+
+00:05:34.890 --> 00:05:39.630
+learning but adding to it the
+exciting tool of generative AI.
+
+00:05:39.630 --> 00:05:42.390
+So many of you,
+maybe all of you,
+
+00:05:42.390 --> 00:05:44.800
+have played with ChatGPT
+and Bard, and so on.
+
+00:05:44.800 --> 00:05:48.360
+But just given a piece of
+text, which you call a prompt,
+
+00:05:48.360 --> 00:05:50.880
+like I love eating, if you
+run this multiple times,
+
+00:05:50.880 --> 00:05:53.940
+maybe you get bagels cream
+cheese or my mother's meatloaf
+
+00:05:53.940 --> 00:05:56.520
+or out with friends,
+and the AI system
+
+00:05:56.520 --> 00:05:59.100
+can generate output like that.
+
+00:05:59.100 --> 00:06:01.780
+Given the amounts of buzz and
+excitement about generative AI,
+
+00:06:01.780 --> 00:06:05.070
+I thought I'd take just half
+a slide to say a little bit
+
+00:06:05.070 --> 00:06:06.880
+about how this works.
+
+00:06:06.880 --> 00:06:11.670
+So it turns out that generative
+AI, at least this type of text
+
+00:06:11.670 --> 00:06:14.910
+generation, the core of
+it is using supervised
+
+00:06:14.910 --> 00:06:18.420
+learning that inputs output
+mappings to repeatedly predict
+
+00:06:18.420 --> 00:06:19.540
+the next word.
+
+00:06:19.540 --> 00:06:22.270
+And so, if your system
+reads, on the internet,
+
+00:06:22.270 --> 00:06:25.380
+a sentence like, my favorite
+food is a bagel with cream
+
+00:06:25.380 --> 00:06:29.310
+cheese and lox, then this is
+translated into a few data
+
+00:06:29.310 --> 00:06:32.835
+points, where if it sees,
+my favorite food is A,
+
+00:06:32.835 --> 00:06:37.110
+in this case, try to guess that
+the right next word was bagel
+
+00:06:37.110 --> 00:06:39.600
+or my favorite food
+is a bagel, try
+
+00:06:39.600 --> 00:06:42.900
+to guess the next word
+is with, and similarly,
+
+00:06:42.900 --> 00:06:45.570
+if it sees that, in this
+case, the right guess
+
+00:06:45.570 --> 00:06:47.970
+for the next word
+would have been cream.
+
+00:06:47.970 --> 00:06:50.940
+So by taking texts that
+you find on the internet
+
+00:06:50.940 --> 00:06:54.930
+or other sources, and by using
+this input, output, supervised
+
+00:06:54.930 --> 00:06:57.390
+learning to try to repeatedly
+predict the next word,
+
+00:06:57.390 --> 00:07:01.710
+if you train a very large AI
+system on hundreds of billions
+
+00:07:01.710 --> 00:07:04.050
+of words, or in the case
+of the largest models, now
+
+00:07:04.050 --> 00:07:07.330
+more than a trillion words, then
+you get a large language model
+
+00:07:07.330 --> 00:07:08.440
+like ChatGPT.
+
+00:07:08.440 --> 00:07:12.430
+And there are additional, other
+important technical details.
+
+00:07:12.430 --> 00:07:14.140
+I talked about
+predicting the next word.
+
+00:07:14.140 --> 00:07:15.910
+Technically, these
+systems predict
+
+00:07:15.910 --> 00:07:18.790
+the next subword or part
+of a word called a token,
+
+00:07:18.790 --> 00:07:22.120
+and then there are other
+techniques like RLHF
+
+00:07:22.120 --> 00:07:25.900
+for further tuning the AI output
+to be more helpful, honest,
+
+00:07:25.900 --> 00:07:26.770
+and harmless.
+
+00:07:26.770 --> 00:07:30.220
+But at the heart of it
+is this using supervised
+
+00:07:30.220 --> 00:07:32.440
+learning to repeatedly
+predict the next word.
+
+00:07:32.440 --> 00:07:36.340
+That's really what's
+enabling the exciting, really
+
+00:07:36.340 --> 00:07:39.760
+fantastic progress on
+large language models.
+
+00:07:39.760 --> 00:07:46.180
+So while many people have
+seen large language models
+
+00:07:46.180 --> 00:07:48.100
+as a fantastic consumer tool.
+
+00:07:48.100 --> 00:07:51.100
+You can go to a website
+like ChatGPT's website
+
+00:07:51.100 --> 00:07:53.020
+or Bard's or other
+large language models
+
+00:07:53.020 --> 00:07:54.730
+and use it as a fantastic tool.
+
+00:07:54.730 --> 00:07:57.190
+There's one other trend, I
+think is still underappreciated,
+
+00:07:57.190 --> 00:08:01.090
+which is the power of
+large language models,
+
+00:08:01.090 --> 00:08:06.130
+not just as a consumer tool
+but as a developer tool.
+
+00:08:06.130 --> 00:08:09.580
+So it turns out that
+there are applications
+
+00:08:09.580 --> 00:08:14.170
+that used to take me months
+to build, that a lot of people
+
+00:08:14.170 --> 00:08:18.190
+can now build much faster by
+using a large language model.
+
+00:08:18.190 --> 00:08:21.340
+So specifically, the workflow
+for supervised learning,
+
+00:08:21.340 --> 00:08:22.990
+building the restaurant
+review system,
+
+00:08:22.990 --> 00:08:26.500
+say, would be that you need to
+get a bunch of labeled data,
+
+00:08:26.500 --> 00:08:30.310
+and maybe that takes a month, we
+get a few thousand data points.
+
+00:08:30.310 --> 00:08:33.669
+And then have an AI
+team train, and tune,
+
+00:08:33.669 --> 00:08:37.210
+and really get optimized
+performance on your AI model.
+
+00:08:37.210 --> 00:08:39.610
+Maybe that'll take three months.
+
+00:08:39.610 --> 00:08:42.070
+Then find a cloud
+service to run it.
+
+00:08:42.070 --> 00:08:43.480
+Make sure it's running robustly.
+
+00:08:43.480 --> 00:08:45.280
+Make sure it's
+recognized, maybe that'll
+
+00:08:45.280 --> 00:08:46.760
+take another three months.
+
+00:08:46.760 --> 00:08:50.590
+So pretty realistic timeline
+for building a commercial grade
+
+00:08:50.590 --> 00:08:53.630
+machine learning system
+is like 6 to 12 months.
+
+00:08:53.630 --> 00:08:57.610
+And so teams I've led, we often
+took roughly 6 to 12 months
+
+00:08:57.610 --> 00:08:59.260
+to build and deploy
+these systems.
+
+00:08:59.260 --> 00:09:01.930
+And some of them turned
+out to be really valuable.
+
+00:09:01.930 --> 00:09:05.380
+But this is a realistic timeline
+for building and deploying
+
+00:09:05.380 --> 00:09:08.260
+a commercial grade AI system.
+
+00:09:08.260 --> 00:09:11.500
+In contrast, with prompt-based
+AI, where you write a prompt.
+
+00:09:11.500 --> 00:09:13.410
+This is what the
+workflow looks like.
+
+00:09:13.410 --> 00:09:18.160
+You can specify a prompt, that
+takes maybe minutes or hours.
+
+00:09:18.160 --> 00:09:20.340
+And then, you can
+deploy it to the cloud,
+
+00:09:20.340 --> 00:09:22.750
+and that takes
+maybe hours or days.
+
+00:09:22.750 --> 00:09:24.930
+So there are now
+certain AI applications
+
+00:09:24.930 --> 00:09:29.170
+that used to take me,
+literally, six months,
+
+00:09:29.170 --> 00:09:32.310
+maybe a year to build, that
+many teams around the world
+
+00:09:32.310 --> 00:09:34.200
+can now build in maybe a week.
+
+00:09:34.200 --> 00:09:36.900
+And I think this is
+already starting,
+
+00:09:36.900 --> 00:09:38.730
+but the best is
+still yet to come.
+
+00:09:38.730 --> 00:09:41.940
+This is starting to open
+up a flood of a lot more AI
+
+00:09:41.940 --> 00:09:44.530
+applications that can be
+built by a lot of people.
+
+00:09:44.530 --> 00:09:46.410
+So I think many people
+still underestimate
+
+00:09:46.410 --> 00:09:49.930
+the magnitude of the flood
+of custom AI applications
+
+00:09:49.930 --> 00:09:51.940
+that I think is going
+to come down the pipe.
+
+00:09:51.940 --> 00:09:54.780
+Now, I know you
+probably were not
+
+00:09:54.780 --> 00:09:58.500
+expecting me to write
+code in this presentation,
+
+00:09:58.500 --> 00:10:02.350
+but that's what I'm going to do.
+
+00:10:02.350 --> 00:10:05.250
+So it turns out,
+this is all the code
+
+00:10:05.250 --> 00:10:09.890
+that I need in order to
+write a sentiment classifier.
+
+00:10:09.890 --> 00:10:11.297
+So I'm going to--
+
+00:10:11.297 --> 00:10:12.880
+some of you will
+know Python, I guess.
+
+00:10:12.880 --> 00:10:15.400
+Import some tools
+from OpenAI, and then
+
+00:10:15.400 --> 00:10:19.120
+add this prompt, that says,
+classify the text below
+
+00:10:19.120 --> 00:10:21.160
+delimited by three
+dashes as having
+
+00:10:21.160 --> 00:10:26.270
+either a positive or
+negative sentiment.
+
+00:10:26.270 --> 00:10:32.305
+[INAUDIBLE],, I had a fantastic
+time at Stanford GSB.
+
+00:10:36.520 --> 00:10:40.930
+Learnt a lot, and also
+made great new friends.
+
+00:10:40.930 --> 00:10:41.530
+All right.
+
+00:10:41.530 --> 00:10:42.603
+So that's my prompt.
+
+00:10:42.603 --> 00:10:44.020
+And then I'm just
+going to run it.
+
+00:10:44.020 --> 00:10:45.228
+And I've never run it before.
+
+00:10:45.228 --> 00:10:46.163
+So I really hope--
+
+00:10:46.163 --> 00:10:47.830
+thank goodness, it
+got the right answer.
+
+00:10:47.830 --> 00:10:50.626
+[APPLAUSE]
+
+00:10:52.490 --> 00:10:54.700
+And this is literally
+all the code
+
+00:10:54.700 --> 00:10:57.200
+it takes to build a
+sentiment classifier.
+
+00:10:57.200 --> 00:11:00.370
+And so, today, developers
+around the world
+
+00:11:00.370 --> 00:11:02.260
+can take, literally,
+maybe 10 minutes
+
+00:11:02.260 --> 00:11:04.900
+to build a system like this.
+
+00:11:04.900 --> 00:11:11.120
+And that's a very
+exciting development.
+
+00:11:11.120 --> 00:11:16.910
+So one of the things
+I've been working on
+
+00:11:16.910 --> 00:11:21.500
+was trying to teach
+online classes about how
+
+00:11:21.500 --> 00:11:23.270
+to use prompting, not
+just as a consumer
+
+00:11:23.270 --> 00:11:24.890
+tool but as a developer too.
+
+00:11:24.890 --> 00:11:28.400
+So just talking about
+the technology landscape,
+
+00:11:28.400 --> 00:11:32.210
+let me now share my
+thoughts on what are some
+
+00:11:32.210 --> 00:11:34.960
+of the AI opportunities I see.
+
+00:11:34.960 --> 00:11:38.680
+This shows what I think is
+the value of different AI
+
+00:11:38.680 --> 00:11:41.590
+technologies today, and
+I'll talk about three years
+
+00:11:41.590 --> 00:11:42.320
+from now.
+
+00:11:42.320 --> 00:11:46.090
+But the vast majority of
+financial value from AI today
+
+00:11:46.090 --> 00:11:48.220
+is, I think,
+supervised learning,
+
+00:11:48.220 --> 00:11:50.590
+where for a single
+company like Google
+
+00:11:50.590 --> 00:11:53.650
+can be worth more than
+$100 billion US a year.
+
+00:11:53.650 --> 00:11:56.590
+And also, there are
+millions of developers
+
+00:11:56.590 --> 00:11:58.670
+building supervised
+learning applications.
+
+00:11:58.670 --> 00:12:01.390
+So it's already massively
+valuable, and also
+
+00:12:01.390 --> 00:12:03.490
+with tremendous momentum
+behind it just because
+
+00:12:03.490 --> 00:12:06.220
+of the sheer effort in
+finding applications
+
+00:12:06.220 --> 00:12:07.780
+and building applications.
+
+00:12:07.780 --> 00:12:11.560
+And then, generative AI is the
+really exciting new entrant,
+
+00:12:11.560 --> 00:12:13.872
+which is much smaller right now.
+
+00:12:13.872 --> 00:12:15.330
+And then, there
+are the other tools
+
+00:12:15.330 --> 00:12:18.416
+that I'm including
+for completeness.
+
+00:12:18.416 --> 00:12:21.600
+If the size of these circles
+represent the value today,
+
+00:12:21.600 --> 00:12:24.540
+this is what I think it
+might grow to in three years.
+
+00:12:24.540 --> 00:12:27.660
+So supervised learning,
+already really massive,
+
+00:12:27.660 --> 00:12:29.820
+may double, say,
+in the next three
+
+00:12:29.820 --> 00:12:32.910
+years, from truly massive
+to even more massive.
+
+00:12:32.910 --> 00:12:36.313
+And generative AI, which is
+much smaller today, I think,
+
+00:12:36.313 --> 00:12:38.730
+will much more than double in
+the next three years because
+
+00:12:38.730 --> 00:12:41.280
+of the number-- the amount
+of developer interest,
+
+00:12:41.280 --> 00:12:43.770
+the amount of venture
+capital investments,
+
+00:12:43.770 --> 00:12:46.680
+the number of large corporates
+exploring applications.
+
+00:12:46.680 --> 00:12:48.300
+And I also just
+want to point out,
+
+00:12:48.300 --> 00:12:50.430
+three years is a very
+short time horizon.
+
+00:12:50.430 --> 00:12:53.350
+If it continues to compound
+in anything near this rate,
+
+00:12:53.350 --> 00:12:56.560
+then in six years, it will
+be even vastly larger.
+
+00:12:56.560 --> 00:13:00.240
+But this light shaded
+region in green or orange,
+
+00:13:00.240 --> 00:13:03.090
+that light shaded region
+is where the opportunity is
+
+00:13:03.090 --> 00:13:06.660
+for either new startups or for
+large companies, incumbents,
+
+00:13:06.660 --> 00:13:09.947
+to create and to
+enjoy value capture.
+
+00:13:09.947 --> 00:13:12.030
+But one thing I hope you
+take away from this slide
+
+00:13:12.030 --> 00:13:13.890
+is that all of
+these technologies
+
+00:13:13.890 --> 00:13:15.730
+are general purpose
+technologies.
+
+00:13:15.730 --> 00:13:17.940
+So in the case of
+supervised learning,
+
+00:13:17.940 --> 00:13:21.340
+a lot of the work that had to
+be done over the last decade,
+
+00:13:21.340 --> 00:13:23.290
+but is continuing
+for the next decade,
+
+00:13:23.290 --> 00:13:27.310
+is to identify and to execute
+on the concrete use cases.
+
+00:13:27.310 --> 00:13:32.260
+And that process is also
+kicking off for generative AI.
+
+00:13:32.260 --> 00:13:34.010
+So for this part of
+the presentation,
+
+00:13:34.010 --> 00:13:36.790
+I hope you take away from it
+that general purpose technology
+
+00:13:36.790 --> 00:13:39.370
+is a useful for many
+different tasks, lot of value
+
+00:13:39.370 --> 00:13:41.380
+remains to be created
+using supervised learning.
+
+00:13:41.380 --> 00:13:44.890
+And even though, we're nowhere
+near finishing figuring out
+
+00:13:44.890 --> 00:13:47.680
+the exciting use cases
+of supervised learning,
+
+00:13:47.680 --> 00:13:51.310
+we have this other fantastic
+tool of generative AI, which
+
+00:13:51.310 --> 00:13:55.390
+further expands the set of
+things we can now do using AI.
+
+00:13:55.390 --> 00:13:57.580
+But one caveat, which
+is that there will be
+
+00:13:57.580 --> 00:13:59.540
+short term fads along the way.
+
+00:13:59.540 --> 00:14:02.440
+So I don't know if
+some of you might
+
+00:14:02.440 --> 00:14:04.750
+remember the app called Lensa.
+
+00:14:04.750 --> 00:14:06.760
+This is the app
+that will let you
+
+00:14:06.760 --> 00:14:08.390
+upload pictures of
+yourself, and then
+
+00:14:08.390 --> 00:14:09.970
+will render a cool
+picture of you
+
+00:14:09.970 --> 00:14:12.730
+as an astronaut or a
+scientist or something.
+
+00:14:12.730 --> 00:14:14.920
+And it was a good idea
+and people liked it.
+
+00:14:14.920 --> 00:14:17.320
+And its revenue just took
+off like crazy like that,
+
+00:14:17.320 --> 00:14:19.160
+through last December.
+
+00:14:19.160 --> 00:14:20.990
+And then it did that.
+
+00:14:20.990 --> 00:14:25.070
+And that's because Lensa
+was-- it was a good idea.
+
+00:14:25.070 --> 00:14:26.060
+People liked it.
+
+00:14:26.060 --> 00:14:28.700
+But it was a relatively
+thin software layer
+
+00:14:28.700 --> 00:14:31.880
+on top of someone else's
+really powerful APIs.
+
+00:14:31.880 --> 00:14:34.910
+And so even though it
+was a useful product,
+
+00:14:34.910 --> 00:14:39.500
+it was in a defensible business.
+
+00:14:39.500 --> 00:14:42.350
+And when I think
+about apps like Lensa,
+
+00:14:42.350 --> 00:14:45.800
+I'm actually reminded of when
+Steve Jobs gave us the iPhone.
+
+00:14:45.800 --> 00:14:49.100
+Shortly after,
+someone wrote an app
+
+00:14:49.100 --> 00:14:54.290
+that I paid $1.99 for, to
+do this, to turn on the LED,
+
+00:14:54.290 --> 00:14:56.480
+to turn the phone
+into a flashlight.
+
+00:14:56.480 --> 00:14:59.810
+And that was also a good
+idea to write an app
+
+00:14:59.810 --> 00:15:01.910
+to turn on the LED
+light, but it also
+
+00:15:01.910 --> 00:15:03.740
+wasn't a defensible long term--
+
+00:15:03.740 --> 00:15:05.810
+also didn't create
+very long term value
+
+00:15:05.810 --> 00:15:08.690
+because it was easily
+replicated, and underpriced,
+
+00:15:08.690 --> 00:15:11.390
+and eventually
+incorporated into iOS.
+
+00:15:11.390 --> 00:15:14.510
+But with the rise of iOS,
+with the rise of iPhone,
+
+00:15:14.510 --> 00:15:17.630
+someone also figured out how
+to build things like Uber,
+
+00:15:17.630 --> 00:15:19.620
+and Airbnb, and Tinder.
+
+00:15:19.620 --> 00:15:22.170
+The very long term, very
+defensible businesses
+
+00:15:22.170 --> 00:15:24.940
+that created sustaining value.
+
+00:15:24.940 --> 00:15:27.900
+And I think, with the
+rise of generative AI
+
+00:15:27.900 --> 00:15:31.530
+or the rise of new AI
+tools, I think, really,
+
+00:15:31.530 --> 00:15:33.360
+what excites me
+is the opportunity
+
+00:15:33.360 --> 00:15:37.950
+to create those really deep,
+really hard applications that
+
+00:15:37.950 --> 00:15:42.230
+hopefully can create
+very long term value.
+
+00:15:42.230 --> 00:15:43.840
+So the first trend
+I want to share
+
+00:15:43.840 --> 00:15:45.620
+is AI is a general
+purpose technology.
+
+00:15:45.620 --> 00:15:47.453
+And a lot of the work
+that lies ahead of us,
+
+00:15:47.453 --> 00:15:50.995
+is to find the very diverse
+use cases and to build them.
+
+00:15:50.995 --> 00:15:53.290
+There's a second
+trend I want to share
+
+00:15:53.290 --> 00:15:56.620
+with you, which relates to why
+AI isn't more widely adopted
+
+00:15:56.620 --> 00:15:57.340
+yet.
+
+00:15:57.340 --> 00:15:59.680
+It feels like a bunch of us
+have been talking about AI
+
+00:15:59.680 --> 00:16:01.520
+for 15 years or something.
+
+00:16:01.520 --> 00:16:04.450
+But if you look at where
+the value of AI is today,
+
+00:16:04.450 --> 00:16:07.510
+a lot of it is still very
+concentrated in consumer
+
+00:16:07.510 --> 00:16:08.680
+software internet.
+
+00:16:08.680 --> 00:16:11.800
+Once you got outside tech or
+consumer software internet,
+
+00:16:11.800 --> 00:16:15.940
+there's some AI adoption
+but it all feels very early.
+
+00:16:15.940 --> 00:16:17.710
+So why is that?
+
+00:16:17.710 --> 00:16:19.480
+It turns out, if
+you were to take
+
+00:16:19.480 --> 00:16:21.880
+all current and
+potential AI projects,
+
+00:16:21.880 --> 00:16:24.880
+and sort them in
+decreasing order of value,
+
+00:16:24.880 --> 00:16:27.580
+then to the left of this curve,
+of the head of this curve,
+
+00:16:27.580 --> 00:16:31.720
+are the multi-billion dollar
+projects like advertising
+
+00:16:31.720 --> 00:16:35.530
+or web search or for e-commerce
+product recommendations
+
+00:16:35.530 --> 00:16:37.210
+or company like Amazon.
+
+00:16:37.210 --> 00:16:40.333
+And it turns out that
+about 10, 15 years ago,
+
+00:16:40.333 --> 00:16:41.750
+[? there's ?] my
+friends and I, we
+
+00:16:41.750 --> 00:16:44.480
+figured out a recipe
+for how to hire, say,
+
+00:16:44.480 --> 00:16:47.690
+100 engineers to write
+one piece of software
+
+00:16:47.690 --> 00:16:50.450
+to serve more relevant
+ads, and apply that one
+
+00:16:50.450 --> 00:16:52.460
+piece of software
+to a billion users,
+
+00:16:52.460 --> 00:16:54.390
+and generate massive
+financial value.
+
+00:16:54.390 --> 00:16:56.300
+So that works.
+
+00:16:56.300 --> 00:16:59.690
+But once you go outside
+consumer software internet,
+
+00:16:59.690 --> 00:17:03.110
+hardly anyone has 100
+million or a billion users
+
+00:17:03.110 --> 00:17:07.290
+that you can write and apply
+one piece of software to.
+
+00:17:07.290 --> 00:17:09.869
+So once you go to
+other industries,
+
+00:17:09.869 --> 00:17:12.329
+as we go from the head
+of this curve on the left
+
+00:17:12.329 --> 00:17:15.869
+over to the long tail, these
+are some of the projects I see,
+
+00:17:15.869 --> 00:17:17.640
+and I'm excited about.
+
+00:17:17.640 --> 00:17:20.369
+I was working with
+a pizza maker that
+
+00:17:20.369 --> 00:17:24.349
+was taking pictures of the pizza
+they were making because they
+
+00:17:24.349 --> 00:17:26.849
+needed to do things like make
+sure that the cheese is spread
+
+00:17:26.849 --> 00:17:27.700
+evenly.
+
+00:17:27.700 --> 00:17:31.020
+So this is about a
+$5 million project.
+
+00:17:31.020 --> 00:17:35.040
+But that recipe of hiring a
+hundred engineers or dozens
+
+00:17:35.040 --> 00:17:37.410
+of engineers to
+work on a $5 million
+
+00:17:37.410 --> 00:17:40.260
+project, that
+doesn't make sense.
+
+00:17:40.260 --> 00:17:42.550
+Or there's another
+great example.
+
+00:17:42.550 --> 00:17:44.670
+Working with a
+agriculture company
+
+00:17:44.670 --> 00:17:47.880
+that with them, we figured
+out that if we use cameras
+
+00:17:47.880 --> 00:17:49.800
+to find out how
+tall is the wheat,
+
+00:17:49.800 --> 00:17:51.300
+and wheat is often
+bent over because
+
+00:17:51.300 --> 00:17:53.310
+of wind or rain or
+something, and we
+
+00:17:53.310 --> 00:17:55.290
+can chop off the wheat
+at the right height,
+
+00:17:55.290 --> 00:17:57.990
+then that results in more
+food for the farmer to sell,
+
+00:17:57.990 --> 00:17:59.980
+and is also better
+for the environment.
+
+00:17:59.980 --> 00:18:02.850
+But this is another
+$5 million project,
+
+00:18:02.850 --> 00:18:06.300
+that that old recipe of
+hiring a large group of highly
+
+00:18:06.300 --> 00:18:08.770
+skilled engineers to work
+on this one project, that
+
+00:18:08.770 --> 00:18:10.150
+doesn't make sense.
+
+00:18:10.150 --> 00:18:12.730
+And similarly materials
+grading, cloth grading,
+
+00:18:12.730 --> 00:18:15.440
+sheet metal grading,
+many projects like this.
+
+00:18:15.440 --> 00:18:18.100
+So whereas to the left,
+in the head of this curve,
+
+00:18:18.100 --> 00:18:20.350
+there's a small
+number of, let's say,
+
+00:18:20.350 --> 00:18:22.150
+multi-billion dollar
+projects, and we
+
+00:18:22.150 --> 00:18:24.910
+know how to execute
+those delivering value.
+
+00:18:24.910 --> 00:18:28.600
+In other industries, I'm
+seeing a very long tail
+
+00:18:28.600 --> 00:18:31.270
+of tens of thousands,
+of let's call them,
+
+00:18:31.270 --> 00:18:33.940
+$5 million projects,
+that until now,
+
+00:18:33.940 --> 00:18:35.800
+have been very
+difficult to execute on
+
+00:18:35.800 --> 00:18:38.710
+because of the high
+cost of customization.
+
+00:18:38.710 --> 00:18:40.450
+The trend that I
+think is exciting
+
+00:18:40.450 --> 00:18:44.260
+is that the AI community has
+been building better tools that
+
+00:18:44.260 --> 00:18:46.570
+lets us aggregate
+these use cases,
+
+00:18:46.570 --> 00:18:49.850
+and make it easy for the end
+user to do the customization.
+
+00:18:49.850 --> 00:18:51.880
+So specifically,
+I'm seeing a lot
+
+00:18:51.880 --> 00:18:55.390
+of exciting low code
+and no code tools, that
+
+00:18:55.390 --> 00:18:58.670
+enable the user to
+customize the AI system.
+
+00:18:58.670 --> 00:19:00.790
+What this means
+is instead of me,
+
+00:19:00.790 --> 00:19:04.270
+needing to worry that much
+about pictures of pizza,
+
+00:19:04.270 --> 00:19:05.530
+we have tools--
+
+00:19:05.530 --> 00:19:07.990
+we're starting to see
+tools that can enable
+
+00:19:07.990 --> 00:19:10.900
+the IT department of
+the pizza making factory
+
+00:19:10.900 --> 00:19:13.600
+to train AI system on
+their own pictures of pizza
+
+00:19:13.600 --> 00:19:16.460
+to realize this $5
+million worth of value.
+
+00:19:16.460 --> 00:19:19.305
+And by the way, the
+pictures of pizza,
+
+00:19:19.305 --> 00:19:20.680
+they don't exist
+on the internet.
+
+00:19:20.680 --> 00:19:23.480
+So Google and Bing don't have
+access to these pictures,
+
+00:19:23.480 --> 00:19:25.750
+we need tools that can
+be used by, really,
+
+00:19:25.750 --> 00:19:28.700
+the pizza factory themselves,
+to build, and deploy,
+
+00:19:28.700 --> 00:19:31.630
+and maintain their own
+custom AI system that works
+
+00:19:31.630 --> 00:19:33.910
+on their own pictures of pizza.
+
+00:19:33.910 --> 00:19:39.010
+And broadly, the technology
+for enabling this, some of it
+
+00:19:39.010 --> 00:19:42.580
+is prompting, text
+prompting, visual prompting,
+
+00:19:42.580 --> 00:19:45.430
+but really, large language
+models and similar tools
+
+00:19:45.430 --> 00:19:49.510
+like that or a technology
+called data-centric AI, whereby,
+
+00:19:49.510 --> 00:19:54.950
+instead of asking the pizza
+factory to write a lot of code,
+
+00:19:54.950 --> 00:19:59.140
+which is challenging, we can
+ask them to provide data which
+
+00:19:59.140 --> 00:20:01.840
+turns out to be more feasible.
+
+00:20:01.840 --> 00:20:03.780
+And I think the second
+trend is important,
+
+00:20:03.780 --> 00:20:06.600
+because I think this is a key
+part of the recipe for taking
+
+00:20:06.600 --> 00:20:09.180
+the value of AI, which
+so far still feels
+
+00:20:09.180 --> 00:20:12.030
+very concentrated in the tech
+world and the consumer software
+
+00:20:12.030 --> 00:20:15.900
+internet world, and pushing this
+out to all industries, really
+
+00:20:15.900 --> 00:20:17.820
+to the rest of the
+economy, which--
+
+00:20:17.820 --> 00:20:20.220
+sometimes it's easy to forget,
+the rest of the economy
+
+00:20:20.220 --> 00:20:23.810
+is much bigger than
+the tech world.
+
+00:20:23.810 --> 00:20:27.550
+So the two trends I shared,
+AI as a general purpose
+
+00:20:27.550 --> 00:20:29.860
+technology, lots of
+concrete use cases
+
+00:20:29.860 --> 00:20:33.760
+to be realized as well as low
+code, no code, easy to use
+
+00:20:33.760 --> 00:20:37.990
+tools, enabling AI to be
+deployed in more industries.
+
+00:20:37.990 --> 00:20:41.210
+How do we go after
+these opportunities?
+
+00:20:41.210 --> 00:20:44.030
+So about five years ago, there
+was a puzzle I wanted to solve,
+
+00:20:44.030 --> 00:20:44.530
+which is--
+
+00:20:44.530 --> 00:20:47.600
+I felt that many valuable AI
+projects are now possible.
+
+00:20:47.600 --> 00:20:49.780
+And I was thinking, how
+do we get them done?
+
+00:20:49.780 --> 00:20:54.400
+And having led teams in
+Google, and Baidu, in big tech
+
+00:20:54.400 --> 00:20:57.340
+companies, I had a
+hard time figuring out
+
+00:20:57.340 --> 00:21:01.000
+how I could operate a
+team in a big tech company
+
+00:21:01.000 --> 00:21:04.750
+to go after a very diverse set
+of opportunities in everything
+
+00:21:04.750 --> 00:21:08.102
+from maritime shipping to
+education to financial services
+
+00:21:08.102 --> 00:21:09.310
+to healthcare, and on and on.
+
+00:21:09.310 --> 00:21:11.980
+It's just very diverse
+use cases, very diverse
+
+00:21:11.980 --> 00:21:15.430
+go to markets, and very
+diverse customer bases
+
+00:21:15.430 --> 00:21:17.560
+and applications.
+
+00:21:17.560 --> 00:21:20.770
+And I felt that the
+most efficient way
+
+00:21:20.770 --> 00:21:22.390
+to do this would
+be if we can start
+
+00:21:22.390 --> 00:21:25.370
+a lot of different companies
+to pursue these very
+
+00:21:25.370 --> 00:21:27.030
+diverse opportunities.
+
+00:21:27.030 --> 00:21:29.510
+So that's why I ended up
+starting AI Fund, which
+
+00:21:29.510 --> 00:21:31.850
+is a venture studio
+that builds startups
+
+00:21:31.850 --> 00:21:34.880
+to pursue a diverse set
+of AI opportunities.
+
+00:21:34.880 --> 00:21:37.580
+And, of course, in addition
+to lots of startups,
+
+00:21:37.580 --> 00:21:39.770
+incumbent companies
+also have a lot
+
+00:21:39.770 --> 00:21:43.500
+of opportunities to integrate
+AI into existing businesses.
+
+00:21:43.500 --> 00:21:47.360
+In fact, one pattern I'm seeing
+for incumbent businesses is
+
+00:21:47.360 --> 00:21:52.490
+distribution is often one of
+the significant advantages
+
+00:21:52.490 --> 00:21:55.100
+of incumbent companies, if
+they play their cards right,
+
+00:21:55.100 --> 00:21:58.340
+can allow them to integrate
+AI into their products,
+
+00:21:58.340 --> 00:21:59.630
+quite efficiently.
+
+00:21:59.630 --> 00:22:02.610
+But just to be concrete,
+where are the opportunities?
+
+00:22:02.610 --> 00:22:06.200
+So I think of this as-- this is
+what I think of as an AI stack.
+
+00:22:06.200 --> 00:22:09.680
+At the bottom level is the
+hardware, semiconductor layer.
+
+00:22:09.680 --> 00:22:13.220
+Fantastic opportunities there,
+but very capital intensive,
+
+00:22:13.220 --> 00:22:14.510
+very concentrated.
+
+00:22:14.510 --> 00:22:16.850
+So needs a lot of resources,
+relatively few winners.
+
+00:22:16.850 --> 00:22:18.810
+So some people can
+and should play there.
+
+00:22:18.810 --> 00:22:21.020
+I personally don't like
+to play there myself.
+
+00:22:21.020 --> 00:22:22.880
+There's also the
+infrastructure layer.
+
+00:22:22.880 --> 00:22:26.120
+Also fantastic opportunities,
+but very capital intensive,
+
+00:22:26.120 --> 00:22:27.320
+very concentrated.
+
+00:22:27.320 --> 00:22:30.810
+So I tend not to play
+there myself, either.
+
+00:22:30.810 --> 00:22:33.200
+And then there's the
+developer tool layer.
+
+00:22:33.200 --> 00:22:34.940
+What I showed you just now was--
+
+00:22:34.940 --> 00:22:38.450
+I was actually using OpenAI's
+API as a developer tool.
+
+00:22:38.450 --> 00:22:40.850
+And then, I think
+the developer tool
+
+00:22:40.850 --> 00:22:43.400
+sector is a hypercompetitive.
+
+00:22:43.400 --> 00:22:46.460
+Look at all the startups
+chasing OpenAI right now.
+
+00:22:46.460 --> 00:22:48.920
+But there will be
+some mega winners.
+
+00:22:48.920 --> 00:22:52.400
+And so I sometimes play
+here, but primarily,
+
+00:22:52.400 --> 00:22:54.770
+when I think of a meaningful
+technology advantage,
+
+00:22:54.770 --> 00:22:56.840
+because I think that
+earns you the right
+
+00:22:56.840 --> 00:23:00.600
+or earns you a better shot at
+being one of the mega winners.
+
+00:23:00.600 --> 00:23:04.230
+And then lastly, even though
+a lot of the media attention
+
+00:23:04.230 --> 00:23:07.050
+and the buzz is in the
+infrastructure and developer
+
+00:23:07.050 --> 00:23:11.160
+tooling layer, it turns out
+that layer can be successful
+
+00:23:11.160 --> 00:23:15.450
+only if the application layer
+is even more successful.
+
+00:23:15.450 --> 00:23:17.790
+And we saw this with the
+rise of SaaS as well.
+
+00:23:17.790 --> 00:23:20.550
+Lot of the buzz and excitement
+is on the technology,
+
+00:23:20.550 --> 00:23:21.597
+the tooling layer.
+
+00:23:21.597 --> 00:23:22.180
+Which is fine.
+
+00:23:22.180 --> 00:23:23.180
+Nothing wrong with that.
+
+00:23:23.180 --> 00:23:25.170
+But the only way for
+that to be successful
+
+00:23:25.170 --> 00:23:27.882
+is if the application layer
+is even more successful,
+
+00:23:27.882 --> 00:23:29.340
+so that, frankly,
+they can generate
+
+00:23:29.340 --> 00:23:32.550
+enough revenue to pay the
+infrastructure, and the tooling
+
+00:23:32.550 --> 00:23:33.330
+layer.
+
+00:23:33.330 --> 00:23:36.540
+So, actually, let me
+mention one example.
+
+00:23:36.540 --> 00:23:39.900
+Amorai-- I was actually just
+texting the CEO yesterday.
+
+00:23:39.900 --> 00:23:42.630
+But Amorai is a
+company that we built
+
+00:23:42.630 --> 00:23:48.180
+that uses AI for romantic
+relationship coaching.
+
+00:23:48.180 --> 00:23:50.830
+And just to point
+out, I'm an AI guy.
+
+00:23:50.830 --> 00:23:56.640
+And I feel like I know
+nothing really about romance.
+
+00:23:56.640 --> 00:24:00.090
+And if you don't believe
+me, you can ask my wife,
+
+00:24:00.090 --> 00:24:03.750
+she will confirm that I
+know nothing about romance.
+
+00:24:03.750 --> 00:24:05.460
+But when we went
+to build this, we
+
+00:24:05.460 --> 00:24:09.360
+wanted to get together with the
+former CEO of Tinder, Renate
+
+00:24:09.360 --> 00:24:09.990
+Nyborg.
+
+00:24:09.990 --> 00:24:12.810
+And with my team's
+expertise in AI,
+
+00:24:12.810 --> 00:24:14.850
+and her expertise
+in relationships
+
+00:24:14.850 --> 00:24:17.700
+because she ran Tinder, she
+knows more about relationships
+
+00:24:17.700 --> 00:24:19.440
+than I think anyone
+I know, we're
+
+00:24:19.440 --> 00:24:21.540
+able to build something
+pretty unique using
+
+00:24:21.540 --> 00:24:26.040
+AI for kind of romantic
+relationship mentoring.
+
+00:24:26.040 --> 00:24:28.560
+And the interesting thing
+about applications like these
+
+00:24:28.560 --> 00:24:32.550
+is when we look around,
+how many teams in the world
+
+00:24:32.550 --> 00:24:36.720
+are simultaneously expert
+in AI and in relationships?
+
+00:24:36.720 --> 00:24:38.850
+And so at the
+application layer, I'm
+
+00:24:38.850 --> 00:24:41.760
+seeing a lot of
+exciting opportunities
+
+00:24:41.760 --> 00:24:44.040
+that seem to have a
+very large market,
+
+00:24:44.040 --> 00:24:46.410
+but where the
+competition sets is
+
+00:24:46.410 --> 00:24:49.030
+very light, relative to the
+magnitude of the opportunity.
+
+00:24:49.030 --> 00:24:50.655
+It's not that there
+are no competitors,
+
+00:24:50.655 --> 00:24:54.240
+but it's just much less intense
+compared to the developer tool
+
+00:24:54.240 --> 00:24:55.860
+or the infrastructure layers.
+
+00:24:55.860 --> 00:25:00.810
+And so, because I've spent
+a lot of time iterating
+
+00:25:00.810 --> 00:25:03.510
+on a process of building
+startups, what I'm going to do
+
+00:25:03.510 --> 00:25:05.220
+is just, very
+transparently, tell
+
+00:25:05.220 --> 00:25:08.470
+you the recipe we've developed
+for building startups.
+
+00:25:08.470 --> 00:25:11.370
+And so after many years of
+iteration and improvement,
+
+00:25:11.370 --> 00:25:14.610
+this is how we now
+build startups.
+
+00:25:14.610 --> 00:25:17.430
+My team's always had access
+to a lot of different ideas,
+
+00:25:17.430 --> 00:25:20.100
+internally generated,
+ideas from partners.
+
+00:25:20.100 --> 00:25:23.190
+And I want to walk through this
+with one example of something
+
+00:25:23.190 --> 00:25:25.530
+we did, which is a
+company Bearing AI,
+
+00:25:25.530 --> 00:25:28.750
+which uses AI to make
+ships more fuel efficient.
+
+00:25:28.750 --> 00:25:32.800
+So this idea came to me
+when, a few years ago,
+
+00:25:32.800 --> 00:25:35.310
+a large Japanese
+conglomerate called Mitsui,
+
+00:25:35.310 --> 00:25:39.900
+that is a major shareholder and
+operates major shipping lines,
+
+00:25:39.900 --> 00:25:42.330
+they came to me and they
+said, hey, Andrew, you
+
+00:25:42.330 --> 00:25:45.330
+should build a business to
+use AI to make ships more fuel
+
+00:25:45.330 --> 00:25:46.290
+efficient.
+
+00:25:46.290 --> 00:25:48.870
+And the specific
+idea was, think of it
+
+00:25:48.870 --> 00:25:50.490
+as a Google Maps for ships.
+
+00:25:50.490 --> 00:25:53.700
+We can suggest a ship or
+tell a ship how to steer,
+
+00:25:53.700 --> 00:25:56.220
+so that you still get to
+your destination on time,
+
+00:25:56.220 --> 00:26:00.380
+but using, it turns out,
+about 10% less fuel.
+
+00:26:00.380 --> 00:26:04.220
+And so what we now do is
+we spend about a month,
+
+00:26:04.220 --> 00:26:05.420
+validating the idea.
+
+00:26:05.420 --> 00:26:08.300
+So double check, is this idea
+even technically feasible,
+
+00:26:08.300 --> 00:26:09.883
+and then talk to
+prospective customers
+
+00:26:09.883 --> 00:26:11.383
+to make sure there
+is a market need.
+
+00:26:11.383 --> 00:26:13.200
+So we spent up to about
+a month doing that.
+
+00:26:13.200 --> 00:26:16.400
+And if it passes
+this stage, then we
+
+00:26:16.400 --> 00:26:20.210
+will go and recruit a CEO to
+work with us on the project.
+
+00:26:20.210 --> 00:26:22.160
+When I was starting,
+out I used to spend
+
+00:26:22.160 --> 00:26:24.320
+a long time working
+on a project myself,
+
+00:26:24.320 --> 00:26:25.550
+before bringing on a CEO.
+
+00:26:25.550 --> 00:26:28.250
+But after iterating, we
+realized that bringing
+
+00:26:28.250 --> 00:26:30.170
+on a leader at
+the very beginning
+
+00:26:30.170 --> 00:26:33.980
+to work with us, it reduces
+a lot of the burden of having
+
+00:26:33.980 --> 00:26:36.320
+to transfer knowledge
+or having a CEO come in
+
+00:26:36.320 --> 00:26:38.730
+and having to revalidate
+what [? we ?] discovered.
+
+00:26:38.730 --> 00:26:41.030
+So the process is, we've,
+learned much more efficient,
+
+00:26:41.030 --> 00:26:44.000
+we just bring the leader
+at the very start.
+
+00:26:44.000 --> 00:26:45.890
+And so in the case
+of Bearing AI,
+
+00:26:45.890 --> 00:26:48.050
+we found a fantastic
+CEO, Dylan Keil,
+
+00:26:48.050 --> 00:26:51.200
+who is a reputed entrepreneur,
+one successful exit before.
+
+00:26:51.200 --> 00:26:54.950
+And then we spent three
+months, six, two week sprints,
+
+00:26:54.950 --> 00:26:57.500
+to work with them
+to build a prototype
+
+00:26:57.500 --> 00:27:01.380
+as well as do deep
+customer validation.
+
+00:27:01.380 --> 00:27:03.650
+If it survives
+this stage, and we
+
+00:27:03.650 --> 00:27:06.890
+have about a two thirds,
+66% survival rate,
+
+00:27:06.890 --> 00:27:08.510
+we then write the
+first check in,
+
+00:27:08.510 --> 00:27:10.640
+which then gives the
+company resources
+
+00:27:10.640 --> 00:27:13.970
+to hire an executive
+team, build the key team,
+
+00:27:13.970 --> 00:27:16.760
+get an MVP working, minimum
+viable product working,
+
+00:27:16.760 --> 00:27:18.680
+and get some real customers.
+
+00:27:18.680 --> 00:27:21.260
+And then after that,
+hopefully, then successfully
+
+00:27:21.260 --> 00:27:24.030
+raises additional external
+rounds of funding,
+
+00:27:24.030 --> 00:27:26.360
+and can keep on
+growing and scaling.
+
+00:27:26.360 --> 00:27:28.760
+So I'm really proud of
+the work that my team
+
+00:27:28.760 --> 00:27:33.140
+was able to do to support
+Mitsui's idea, and Dylan Keil,
+
+00:27:33.140 --> 00:27:33.950
+as CEO.
+
+00:27:33.950 --> 00:27:37.250
+And today, there are hundreds
+of ships, on the high seas
+
+00:27:37.250 --> 00:27:40.400
+right now, that are steering
+themselves differently
+
+00:27:40.400 --> 00:27:41.750
+because of Bearing AI.
+
+00:27:41.750 --> 00:27:46.340
+And 10% fuel savings
+translates to around to maybe
+
+00:27:46.340 --> 00:27:49.890
+$450,000 in savings in
+fuel, per, ship per year.
+
+00:27:49.890 --> 00:27:52.460
+And, of course, it's also,
+frankly, quite a bit better
+
+00:27:52.460 --> 00:27:54.000
+for the environment.
+
+00:27:54.000 --> 00:27:56.980
+And I think this
+startup, I think,
+
+00:27:56.980 --> 00:28:00.550
+would not have existed if not
+for Dylan's fantastic work,
+
+00:28:00.550 --> 00:28:04.340
+and then also, Mitsui
+bringing this idea to me.
+
+00:28:04.340 --> 00:28:08.320
+And I like this example because
+this is another one is like--
+
+00:28:08.320 --> 00:28:11.530
+this is a startup idea
+that, just to point out,
+
+00:28:11.530 --> 00:28:13.870
+I would never have
+come up with myself.
+
+00:28:13.870 --> 00:28:16.420
+Because I've been
+on a boat but what
+
+00:28:16.420 --> 00:28:19.210
+do I know about
+maritime shipping.
+
+00:28:19.210 --> 00:28:23.020
+But is the deep subject
+matter expertise of Mitsui,
+
+00:28:23.020 --> 00:28:25.870
+that had this insight,
+together with Dylan,
+
+00:28:25.870 --> 00:28:29.930
+and then my team's expertise
+in AI, that made this possible.
+
+00:28:29.930 --> 00:28:33.130
+And so as I operate in
+AI, one thing I've learned
+
+00:28:33.130 --> 00:28:36.010
+is my swim lane is
+AI, and that's it.
+
+00:28:36.010 --> 00:28:39.220
+Because I don't have time or
+it's very difficult for me
+
+00:28:39.220 --> 00:28:41.020
+to be expert in
+maritime shipping,
+
+00:28:41.020 --> 00:28:43.330
+and romantic relationships,
+and health care,
+
+00:28:43.330 --> 00:28:45.710
+and financial services,
+and on, and on, and on.
+
+00:28:45.710 --> 00:28:47.800
+And so I've learned
+that if I can just
+
+00:28:47.800 --> 00:28:51.220
+help get a accurate
+technical validation,
+
+00:28:51.220 --> 00:28:53.860
+and then use AI
+resources to make sure
+
+00:28:53.860 --> 00:28:55.450
+the AI tech is built
+quickly and well,
+
+00:28:55.450 --> 00:28:56.990
+and I think, we've
+always managed
+
+00:28:56.990 --> 00:28:59.210
+to help the companies build
+a strong technical team,
+
+00:28:59.210 --> 00:29:02.240
+then partnering with subject
+matter experts often results
+
+00:29:02.240 --> 00:29:05.030
+in exciting new opportunities.
+
+00:29:05.030 --> 00:29:08.930
+And I want to share with you
+one other weird aspect of--
+
+00:29:08.930 --> 00:29:10.610
+one other weird
+thing I've learned
+
+00:29:10.610 --> 00:29:14.000
+about building
+startups, which is I
+
+00:29:14.000 --> 00:29:16.880
+like to engage only when
+there's a concrete idea.
+
+00:29:16.880 --> 00:29:20.060
+And this runs counter to
+a lot of the advice you
+
+00:29:20.060 --> 00:29:23.630
+hear from the design thinking
+methodology, which often says,
+
+00:29:23.630 --> 00:29:25.430
+don't rush to solutioning.
+
+00:29:25.430 --> 00:29:28.340
+Explore a lot of alternatives
+before you do a solution.
+
+00:29:28.340 --> 00:29:31.880
+Honestly, we tried
+that, it was very slow.
+
+00:29:31.880 --> 00:29:34.850
+But what we've learned
+is that at the ideation
+
+00:29:34.850 --> 00:29:37.880
+stage, if someone comes to
+me and says, hey, Andrew,
+
+00:29:37.880 --> 00:29:40.280
+you should apply AI
+to financial services.
+
+00:29:40.280 --> 00:29:43.730
+Because I'm not a subject matter
+expert in financial services,
+
+00:29:43.730 --> 00:29:45.860
+it's very slow for
+me to go and learn
+
+00:29:45.860 --> 00:29:48.553
+enough about financial services,
+to figure out what to do.
+
+00:29:48.553 --> 00:29:50.720
+I mean, eventually, you
+could get to a good outcome,
+
+00:29:50.720 --> 00:29:53.460
+but it's a very labor
+intensive, very slow,
+
+00:29:53.460 --> 00:29:56.480
+very expensive process, for
+me, to try to learn industry
+
+00:29:56.480 --> 00:29:57.710
+after industry.
+
+00:29:57.710 --> 00:30:00.980
+In contrast, one of my
+partners wrote this idea
+
+00:30:00.980 --> 00:30:03.200
+as a tongue in cheek,
+not really seriously.
+
+00:30:03.200 --> 00:30:06.290
+But, let's say,
+[INAUDIBLE] by GPT,
+
+00:30:06.290 --> 00:30:08.630
+let's eliminate commercials
+by automatically
+
+00:30:08.630 --> 00:30:11.160
+buying every product advertised
+in exchange for not having
+
+00:30:11.160 --> 00:30:13.430
+to see any ads, it's
+not a good idea,
+
+00:30:13.430 --> 00:30:16.160
+but it is a concrete idea.
+
+00:30:16.160 --> 00:30:19.910
+And it turns out, concrete ideas
+can be validated or falsified,
+
+00:30:19.910 --> 00:30:22.100
+efficiently.
+
+00:30:22.100 --> 00:30:25.190
+They also give a team a
+clear direction to execute.
+
+00:30:25.190 --> 00:30:27.240
+And I've learned that
+in today's world,
+
+00:30:27.240 --> 00:30:30.020
+especially, with the excitement,
+the buzz, the exposure to AI
+
+00:30:30.020 --> 00:30:32.510
+of a lot of people, it
+turns out that there
+
+00:30:32.510 --> 00:30:35.090
+are a lot of subject matter
+experts in today's world,
+
+00:30:35.090 --> 00:30:38.630
+that have deeply thought about
+a problem for months, sometimes
+
+00:30:38.630 --> 00:30:40.680
+even one or two years.
+
+00:30:40.680 --> 00:30:42.600
+But they've not yet
+had a build partner.
+
+00:30:42.600 --> 00:30:45.350
+And when we get together
+with them, and hear,
+
+00:30:45.350 --> 00:30:46.880
+and they share
+the idea of us, it
+
+00:30:46.880 --> 00:30:49.130
+allows us to work with
+them to very quickly go
+
+00:30:49.130 --> 00:30:51.360
+into validation and building.
+
+00:30:51.360 --> 00:30:53.840
+And I find that this
+works because there
+
+00:30:53.840 --> 00:30:57.170
+are a lot of people that
+have already done the design
+
+00:30:57.170 --> 00:31:00.430
+thinking thing of exploring
+a lot of ideas and winnowing
+
+00:31:00.430 --> 00:31:01.870
+down to really good ideas.
+
+00:31:01.870 --> 00:31:03.550
+And there are-- I
+find that there are so
+
+00:31:03.550 --> 00:31:05.170
+many good ideas
+sitting out there,
+
+00:31:05.170 --> 00:31:06.850
+that no one is working on.
+
+00:31:06.850 --> 00:31:09.670
+That finding those good ideas
+that someone has already
+
+00:31:09.670 --> 00:31:13.420
+had, and wants to share with us,
+and wants to build partner for,
+
+00:31:13.420 --> 00:31:17.890
+that turns out to be a
+much more efficient engine.
+
+00:31:17.890 --> 00:31:21.880
+So before I wrap up, we'll go
+to the question in a second,
+
+00:31:21.880 --> 00:31:25.910
+just a few slides to talk
+about risk and social impact.
+
+00:31:25.910 --> 00:31:29.020
+So AI is very
+powerful technology.
+
+00:31:29.020 --> 00:31:31.420
+To say something you'd
+probably guess, my teams and I,
+
+00:31:31.420 --> 00:31:34.060
+we only work on projects
+that move humanity forward.
+
+00:31:34.060 --> 00:31:37.810
+And we have multiple
+times killed projects
+
+00:31:37.810 --> 00:31:40.570
+that we assess to be
+financially sound, based
+
+00:31:40.570 --> 00:31:41.500
+on ethical grounds.
+
+00:31:41.500 --> 00:31:43.960
+It turns out, I've
+been surprised
+
+00:31:43.960 --> 00:31:47.170
+and sometimes dismayed at
+the creativity of people
+
+00:31:47.170 --> 00:31:49.280
+to come up with good ideas.
+
+00:31:49.280 --> 00:31:52.120
+So to come up with
+really bad ideas that
+
+00:31:52.120 --> 00:31:55.300
+seem profitable but really
+should not be built.
+
+00:31:55.300 --> 00:31:58.370
+We've killed a few
+projects on those grounds.
+
+00:31:58.370 --> 00:32:01.450
+And then, I think, has to be
+acknowledged that AI today
+
+00:32:01.450 --> 00:32:04.810
+does have problems with
+bias, fairness, and accuracy.
+
+00:32:04.810 --> 00:32:07.930
+But also the technology
+is improving quickly.
+
+00:32:07.930 --> 00:32:10.300
+So I see that AI
+systems today are
+
+00:32:10.300 --> 00:32:12.850
+less biased than six
+months ago, and more
+
+00:32:12.850 --> 00:32:14.890
+fair than six months
+ago, which is not
+
+00:32:14.890 --> 00:32:16.990
+to dismiss the importance
+of these problems.
+
+00:32:16.990 --> 00:32:19.390
+They are problems and we should
+continue to work on them.
+
+00:32:19.390 --> 00:32:21.730
+But I'm also gratified
+at the number
+
+00:32:21.730 --> 00:32:23.740
+of teams working
+hard on these issues
+
+00:32:23.740 --> 00:32:25.450
+to make them much better.
+
+00:32:25.450 --> 00:32:27.290
+When I think of the
+biggest risks of AI.
+
+00:32:27.290 --> 00:32:28.750
+I think that the biggest risks--
+
+00:32:28.750 --> 00:32:33.200
+one of the biggest risks
+is the disruption to jobs.
+
+00:32:33.200 --> 00:32:36.970
+This is a diagram from a paper
+by our friend at the University
+
+00:32:36.970 --> 00:32:39.190
+of Pennsylvania, and
+some folks at OpenAI,
+
+00:32:39.190 --> 00:32:42.070
+analyzing the exposure
+of different jobs
+
+00:32:42.070 --> 00:32:43.870
+to AI automation.
+
+00:32:43.870 --> 00:32:48.130
+And it turns out that, whereas,
+the previous wave of automation
+
+00:32:48.130 --> 00:32:49.330
+mainly--
+
+00:32:49.330 --> 00:32:52.330
+the most exposed jobs were
+often the lower wage jobs,
+
+00:32:52.330 --> 00:32:56.020
+such as when we put
+robots into factories.
+
+00:32:56.020 --> 00:32:58.330
+With this current
+wave of automation,
+
+00:32:58.330 --> 00:33:00.910
+is actually the higher
+wage jobs, further,
+
+00:33:00.910 --> 00:33:03.130
+to the right of this
+axis, that seems
+
+00:33:03.130 --> 00:33:06.140
+to have more of their tasks
+exposed to automation.
+
+00:33:06.140 --> 00:33:10.410
+So even as we create
+tremendous value using AI,
+
+00:33:10.410 --> 00:33:14.685
+I feel like, as citizens,
+and our corporations,
+
+00:33:14.685 --> 00:33:16.060
+and our governments,
+and, really,
+
+00:33:16.060 --> 00:33:18.850
+our society, I feel
+a strong obligation
+
+00:33:18.850 --> 00:33:22.270
+to make sure that people,
+especially people whose
+
+00:33:22.270 --> 00:33:25.990
+livelihoods are disrupted,
+are still well taken care of,
+
+00:33:25.990 --> 00:33:28.650
+are still treated well.
+
+00:33:28.650 --> 00:33:32.480
+And then lastly,
+there's also been--
+
+00:33:32.480 --> 00:33:35.900
+it feels like every time there's
+a big wave of progress in AI,
+
+00:33:35.900 --> 00:33:39.590
+there's a big wave of hype about
+artificial general intelligence
+
+00:33:39.590 --> 00:33:40.280
+as well.
+
+00:33:40.280 --> 00:33:42.990
+When DeepLearning started
+work really well 10 years ago,
+
+00:33:42.990 --> 00:33:44.437
+there was a lot
+of hype about AGI.
+
+00:33:44.437 --> 00:33:46.520
+And now, the generative
+AI is working really well,
+
+00:33:46.520 --> 00:33:49.160
+there's another wave
+of hype about AGI.
+
+00:33:49.160 --> 00:33:53.157
+But I think that artificial
+general intelligence,
+
+00:33:53.157 --> 00:33:54.740
+AI that can do
+anything a human can do
+
+00:33:54.740 --> 00:33:58.410
+is still decades away, maybe 30
+to 50 years, maybe even longer.
+
+00:33:58.410 --> 00:33:59.960
+I hope we'll see it
+in our lifetimes.
+
+00:33:59.960 --> 00:34:02.690
+But I don't think
+there's any time soon.
+
+00:34:02.690 --> 00:34:06.530
+One of the challenges is
+that the biological path
+
+00:34:06.530 --> 00:34:09.230
+to intelligence, like
+humans and the digital path
+
+00:34:09.230 --> 00:34:13.310
+to intelligence, AI, they've
+taken very different paths.
+
+00:34:13.310 --> 00:34:15.770
+And the funny thing about
+the definition of AGI
+
+00:34:15.770 --> 00:34:19.040
+is you're benchmarking this
+very different digital path
+
+00:34:19.040 --> 00:34:21.762
+to intelligence with
+really the biological path
+
+00:34:21.762 --> 00:34:22.429
+to intelligence.
+
+00:34:22.429 --> 00:34:25.489
+So I think, large language
+models are smarter
+
+00:34:25.489 --> 00:34:28.409
+than any of us in
+certain key dimensions,
+
+00:34:28.409 --> 00:34:31.350
+but much dumber than any
+of us in other dimensions.
+
+00:34:31.350 --> 00:34:33.929
+And so forcing it to do
+everything a human can do
+
+00:34:33.929 --> 00:34:35.699
+is like a funny comparison.
+
+00:34:35.699 --> 00:34:37.139
+But I hope we'll get there.
+
+00:34:37.139 --> 00:34:38.980
+Hopefully, within our lifetimes.
+
+00:34:38.980 --> 00:34:41.520
+And then there's also
+a lot of, I think,
+
+00:34:41.520 --> 00:34:45.540
+overblown hype about AI creating
+extinction risks for humanity.
+
+00:34:45.540 --> 00:34:46.900
+Candidly, I don't see it.
+
+00:34:46.900 --> 00:34:49.889
+I just don't see how AI creates
+any meaningful extinction
+
+00:34:49.889 --> 00:34:52.270
+risk for humanity.
+
+00:34:52.270 --> 00:34:56.219
+I think that people worry
+we can't control AI.
+
+00:34:56.219 --> 00:35:00.090
+But we have lots of, AI will be
+more powerful than any person.
+
+00:35:00.090 --> 00:35:03.000
+But with lots of experience,
+steering, very powerful
+
+00:35:03.000 --> 00:35:05.310
+entities, such as corporations
+or nation states that
+
+00:35:05.310 --> 00:35:07.980
+are far more powerful
+than any single person,
+
+00:35:07.980 --> 00:35:11.730
+and making sure they, for the
+most part, benefit humanity.
+
+00:35:11.730 --> 00:35:14.610
+And also technology
+develops gradually.
+
+00:35:14.610 --> 00:35:17.130
+The so-called hot
+take off scenario,
+
+00:35:17.130 --> 00:35:18.840
+where it's not
+really working today,
+
+00:35:18.840 --> 00:35:20.640
+and then suddenly,
+one day, overnight,
+
+00:35:20.640 --> 00:35:23.100
+it works brilliantly, and we
+achieve super intelligence,
+
+00:35:23.100 --> 00:35:24.360
+takes over the world.
+
+00:35:24.360 --> 00:35:25.900
+That's just not realistic.
+
+00:35:25.900 --> 00:35:28.650
+And I think the AI technology
+will develop slowly,
+
+00:35:28.650 --> 00:35:29.760
+like all the--
+
+00:35:29.760 --> 00:35:31.680
+and then it gives
+us plenty of time
+
+00:35:31.680 --> 00:35:34.440
+to make sure that we
+provide oversight and can
+
+00:35:34.440 --> 00:35:36.090
+manage it to be safe.
+
+00:35:36.090 --> 00:35:38.910
+And lastly, if you look at
+the real extinction risk
+
+00:35:38.910 --> 00:35:42.330
+to humanity, such
+as, fingers crossed,
+
+00:35:42.330 --> 00:35:45.090
+the next pandemic
+or climate change,
+
+00:35:45.090 --> 00:35:47.640
+leading to a massive
+de-population of some parts
+
+00:35:47.640 --> 00:35:51.060
+of the planet, or much lower
+odds, but maybe someday,
+
+00:35:51.060 --> 00:35:54.810
+an asteroid doing to us what
+it had done to the dinosaurs.
+
+00:35:54.810 --> 00:35:57.270
+I think if we look at the
+actual real extinction
+
+00:35:57.270 --> 00:36:01.230
+risk to humanity, AI
+having more intelligence,
+
+00:36:01.230 --> 00:36:03.060
+even artificial
+intelligence in the world,
+
+00:36:03.060 --> 00:36:05.230
+would be a key part
+of the solution.
+
+00:36:05.230 --> 00:36:08.760
+So I feel like if you want
+humanity to survive and thrive
+
+00:36:08.760 --> 00:36:12.250
+for the next 1,000 years,
+rather than slowing AI down,
+
+00:36:12.250 --> 00:36:15.240
+which some people
+propose, I would rather
+
+00:36:15.240 --> 00:36:18.790
+make AI go as fast as possible.
+
+00:36:18.790 --> 00:36:21.720
+So with that, just to summarize,
+this is my last slide.
+
+00:36:21.720 --> 00:36:25.620
+I think that AI, as a
+general purpose technology
+
+00:36:25.620 --> 00:36:29.010
+creates a lot of new
+opportunities for everyone.
+
+00:36:29.010 --> 00:36:31.590
+And a lot of the exciting
+and important work that
+
+00:36:31.590 --> 00:36:35.700
+lies ahead of us all is to go
+and build those concrete use
+
+00:36:35.700 --> 00:36:38.730
+cases, and hopefully,
+in the future,
+
+00:36:38.730 --> 00:36:40.890
+hopefully, I'll have
+opportunities to maybe
+
+00:36:40.890 --> 00:36:43.610
+engage with more of you on
+those opportunities as well.
+
+00:36:43.610 --> 00:36:46.080
+So with that, let me just
+say, thank you all very much.
+
+00:36:46.080 --> 00:36:49.130
+[APPLAUSE]
+
